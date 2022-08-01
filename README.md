@@ -21,7 +21,8 @@
 本を発信して新しい本の情報をを広めるつつ仲間を増やしたい時など
 
 ## 設計書
-
+＊ER図
+https://app.diagrams.net/#G1-EbEXH0otj37Fo3b0xxlQwanRRpqnCxd
 
 ## 開発環境
 - OS：Linux(CentOS)
