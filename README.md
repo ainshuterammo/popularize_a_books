@@ -23,8 +23,10 @@
 ## 設計書
 ER図
 https://app.diagrams.net/#G1-EbEXH0otj37Fo3b0xxlQwanRRpqnCxd
+
 画面遷移図
 https://drive.google.com/file/d/10z719YRACmw4BnOi_WnzAH4_VXt0p6gZ/view?usp=sharing
+
 ## 開発環境
 - OS：Linux(CentOS)
 - 言語：HTML,CSS,JavaScript,Ruby,SQL
