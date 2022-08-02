@@ -42,5 +42,7 @@
 - IDE：Cloud9
 
 ## 使用素材
-- 外部サービスの画像素材・音声素材を使用した場合は、必ずサービス名とURLを明記してください。
-API
+- 使用検討中
+
+## 使用外部API
+ - [楽天ブックス書籍検索API](https://webservice.rakuten.co.jp/documentation/books-book-search)
