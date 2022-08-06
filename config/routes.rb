@@ -1,5 +1,9 @@
 Rails.application.routes.draw do
 
+  devise_scope :member do
+    post 'members/guest_sign_in', to: 'public/sessions#guest_sign_in'
+  end
+
   # 顧客用
   # URL /members/sign_in ...
   devise_for :members,skip: [:passwords], controllers: {
@@ -28,12 +32,17 @@ Rails.application.routes.draw do
     	get 'followers' => 'relationships#followers', as: 'followers'
   end
 
+    get 'books/search'
+    get 'books/selection'
     resources :books, only: [:new, :index, :show, :edit, :create, :destroy, :update] do
       resources :post_comments, only: [:create, :destroy]
       resource :favorites, only: [:create, :destroy]
     end
 
     get '/search', to: 'searches#search'
+
+    get 'books/search'
+    get 'books/selection'
 
   end
 

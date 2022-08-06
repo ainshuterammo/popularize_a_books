@@ -1,0 +1,35 @@
+<table class='table'>
+  <tr><%#= attachment_image_tag(member, :profile_image, :fill, 100, 100, fallback: "no_image.jpg") %></tr>
+  <tr>
+    <th>名前</th>
+    <th><%= @member.full_name %></th>
+  </tr>
+  <tr>
+    <th>ニックネーム</th>
+    <th><%= @member.nick_name %></th>
+  </tr>
+  <tr>
+    <th>投稿数</th>
+    <th><%#= @member.name %></th>
+  </tr>
+  <tr>
+    <th>フォロー</th>
+    <th><%#= link_to @member.followings.count, member_followings_path(@member) %></th>
+  </tr>
+  <tr>
+    <th>フォロワー</th>
+    <th><%#= link_to @member.followers.count, member_followers_path(@member) %></th>
+  </tr>
+  <tr>
+    <th>紹介文</th>
+    <th><%= @member.self_introduction %></th>
+  </tr>
+</table>
+
+
+<% if @member.full_name != "guestuser" %>
+<div class='row'>
+  <%= link_to 'edit',edit_member_path(@member), class: "btn btn-outline-secondary btn-block fas fa-member-cog " %>
+</div>
+<% end %>
+<!--edit_user_#{@member.id}-->

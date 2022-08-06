@@ -1,0 +1,32 @@
+<%= @books.each do |book| %>
+  <table class='table'>
+    <tr>
+      <th>タイトル</th>
+      <th><%= book.title %></th>
+    </tr>
+    <tr>
+      <th>ニックネーム</th>
+      <th><%= book.author %></th>
+    </tr>
+    <tr>
+      <th>投稿数</th>
+      <th><%= book.medium_image_url %></th>
+    </tr>
+    <tr>
+      <th>フォロー</th>
+      <th><%= book.isbn %></th>
+    </tr>
+    <tr>
+      <th>フォロー</th>
+      <th><%= book.isbn %></th>
+    </tr>
+
+  </table>
+<% end %>
+
+<%#= @books.each do |book| %>
+  <%#= book.title %>
+  <%#= book.author %>
+  <%#= book.medium_image_url %>
+  <%#= book.isbn %>
+<%# end %>

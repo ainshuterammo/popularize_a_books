@@ -4,7 +4,16 @@ class Member < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
 
+  def self.guest
+    find_or_create_by!(last_name: 'guestuser' ,email: 'guest@example.com') do |member|
+      member.password = SecureRandom.urlsafe_base64
+      member.last_name = "guestuser"
+    end
+  end
+
   has_many :books
+
+
 
   # 自分がフォローされる（被フォロー）側の関係性
   has_many :reverse_of_relationships, class_name: "Relationship", foreign_key: "followed_id", dependent: :destroy
@@ -17,6 +26,10 @@ class Member < ApplicationRecord
   has_many :followings, through: :relationships, source: :followed
 
   has_one_attached :profile_image
+
+  def full_name
+    last_name + first_name
+  end
 
   def get_profile_image
     (profile_image.attached?) ? profile_image : 'no_image.jpg'

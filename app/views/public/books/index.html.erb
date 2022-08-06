@@ -1,0 +1,35 @@
+<div class='container'>
+  <div class='row'>
+
+    <div class='col-md-8 offset-md-1'>
+      <h2>投稿一覧</h2>
+
+      <table class='table table-hover table-inverse'>
+        <thead>
+          <tr>
+            <th>ニックネーム</th>
+            <th>表紙</th>
+            <th>タイトル</th>
+            <th>カテゴリー</th>
+            <th>オリジナル<by>キャッチコピー</th>
+            <% if member_signed_in? %>
+            <th>フォロー</th>
+            <% end %>
+          </tr>
+        </thead>
+
+        <% @books.each do |book| %>
+       <tbody class="table">
+          <tr>
+            <td><%= link_to user_path(book.user_id) do %>
+            <%#= image_tag book.user.get_profile_image(100,100) %>
+            <% end %></td>
+            <td><%= link_to book.title, book_path(book.id) %></td>
+            <td><%= book.body %></td>
+          </tr>
+        <% end %>
+        </tbody>
+     </table>
+  </div>
+</div>
+

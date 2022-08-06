@@ -3,6 +3,29 @@
 class Public::SessionsController < Devise::SessionsController
   # before_action :configure_sign_in_params, only: [:create]
 
+  def after_sign_in_path_for(resource)
+    '/books'
+  end
+
+  def guest_sign_in
+    member = Member.guest
+    sign_in member
+    redirect_to books_path, notice: 'guestuserでログインしました。'
+  end
+
+  # def reject_customer
+  #   @customer = Customer.find_by(email: params[:customer][:email])
+  #   if @customer
+  #     if @customer.valid_password?(params[:customer][:password]) && (@customer.is_deleted == true)
+  #       reset_session
+  #       flash[:notice] = "退会済みです。再度ご登録をしてご利用ください。"
+  #       redirect_to root_path
+  #     else
+  #       flash[:notice] = "項目を入力してください"
+  #     end
+  #   end
+  # end
+
   # GET /resource/sign_in
   # def new
   #   super
