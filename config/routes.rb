@@ -17,14 +17,24 @@ Rails.application.routes.draw do
 
     root :to =>"homes#top"
 
-    get "/about" => "homes#about"
-    get 'customers/my_page', to: 'customers#show', as: 'my_page'
-    get '/customers/information/edit', to: 'customers#edit', as: 'edit'
-    get '/customers/unsubscribe' => 'customers#unsubscribe', as: 'unsubscribe'
-    patch '/customers/withdraw' => 'customers#withdraw', as: 'withdraw'
-    resources :member, only: [:show, :edit, :update]
+    get "about" => "homes#about"
+    # get "home/about"=>"homes#about"
 
-    resources :book, only: [:new, :index, :show, :edit, :update, :destroy]
+    get 'members/unsubscribe' => 'members#unsubscribe', as: 'unsubscribe'
+    patch 'members/withdraw' => 'members#withdraw', as: 'withdraw'
+    resources :members, only: [:index,:show,:edit,:update] do
+      resource :relationships, only: [:create, :destroy]
+    	get 'followings' => 'relationships#followings', as: 'followings'
+    	get 'followers' => 'relationships#followers', as: 'followers'
+  end
+
+    resources :books, only: [:new, :index, :show, :edit, :create, :destroy, :update] do
+      resources :post_comments, only: [:create, :destroy]
+      resource :favorites, only: [:create, :destroy]
+    end
+
+    get '/search', to: 'searches#search'
+
   end
 
   namespace :admin do
@@ -32,13 +42,14 @@ Rails.application.routes.draw do
 
     get '/' => 'homes#top', as: 'top'
 
-    resources :items, except: [:destroy]
+    resources :books, only: [:destroy] do
+      resources :post_comments, only: [:destroy]
+    end
+
+    resources :categories, only: [:index, :create, :edit, :update]
 
     resources :genres, only: [:index, :create, :edit, :update]
 
-    resources :orders, only: [:show, :update] do
-      resources :order_details, only: [:update]
-    end
   end
 
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html

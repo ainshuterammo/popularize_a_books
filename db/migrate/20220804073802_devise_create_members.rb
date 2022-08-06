@@ -9,7 +9,7 @@ class DeviseCreateMembers < ActiveRecord::Migration[6.1]
       t.string :first_name,         null: false, default: ""
       t.string :last_name,          null: false, default: ""
       t.string :nick_name,          null: false, default: ""
-      t.text :self_introduction,    null: false, default: ""
+      t.text :self_introduction,    default: ""
       t.boolean :is_deleted,        null: false, default: "false"
 
       ## Recoverable
