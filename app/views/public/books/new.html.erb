@@ -1,0 +1,43 @@
+<div class='container'>
+  <div class='row'>
+    <%= form_with model: @book do |f| %>
+
+    <div class="col-md-4">
+      <tr>
+        <th><p><%= image_tag @book.image_url, class: "image" %></p></th>
+      </tr>
+    </div>
+
+    <div class="col-md-8">
+      <table class='table'>
+        <tr>
+          <th><%= f.label "タイトル" %>
+              <p><%= @book.title %></p>
+          </th>
+          <td><%= f.hidden_field :title, :value => @book.title %></td>
+        </tr>
+        <tr>
+          <th><%= f.label "著者" %>
+              <p><%= @book.author %></p>
+          </th>
+          <td><%= f.hidden_field :author, :value => @book.author %></td>
+        </tr>
+        <tr>
+          <th><%= f.label "出版社" %>
+              <p><%= @book.publisher_name %></p>
+          </th>
+          <td><%= f.hidden_field :publisher_name, :value => @book.publisher_name %></td>
+        </tr>
+        <tr>
+          <th><%= f.label "ジャンル" %>
+              <p><%= @book.genre.name %></p>
+          </th>
+          <td><%= f.hidden_field :genre_id, :value => @book.genre_id %></td>
+        </tr>
+      </table>
+    </div>
+    <%= f.submit  class: 'btn btn-success' %>
+    <%= f.hidden_field :isbn, :value => @book.isbn %>
+    <% end %>
+  </div>
+</div>

@@ -19,7 +19,7 @@ class Public::MembersController < ApplicationController
 
   def update
     if @member.update(member_params)
-      redirect_to member_path(@member), notice: "You have updated member successfully."
+      redirect_to member_path(@member), notice: "正常に更新できました"
     else
       render "edit"
     end
@@ -35,12 +35,12 @@ class Public::MembersController < ApplicationController
 
   def ensure_guest_member
     @member = Member.find(params[:id])
-    if @member.name == "guestuser"
+    if @member.full_name == "guestmember"
       redirect_to member_path(current_member) , notice: 'ゲストユーザーはプロフィール編集画面へ遷移できません。'
     end
   end
 
-  def ensure_correct_user
+  def ensure_correct_member
     @member = Member.find(params[:id])
     unless @member == current_member
       redirect_to member_path(current_member)

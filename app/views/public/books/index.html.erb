@@ -10,7 +10,7 @@
             <th>ニックネーム</th>
             <th>表紙</th>
             <th>タイトル</th>
-            <th>カテゴリー</th>
+            <th>ジャンル</th>
             <th>オリジナル<by>キャッチコピー</th>
             <% if member_signed_in? %>
             <th>フォロー</th>
@@ -19,17 +19,21 @@
         </thead>
 
         <% @books.each do |book| %>
-       <tbody class="table">
-          <tr>
-            <td><%= link_to user_path(book.user_id) do %>
-            <%#= image_tag book.user.get_profile_image(100,100) %>
-            <% end %></td>
-            <td><%= link_to book.title, book_path(book.id) %></td>
-            <td><%= book.body %></td>
-          </tr>
+          <tbody class="table">
+            <tr>
+              <td><%= book.member.nick_name %></td>
+              <td>
+                <%= link_to member_path(book.member_id) do %>
+                  <%= image_tag book.image_url, class: "image" %>
+                <% end %></td>
+              <td><%= link_to book.title, book_path(book.id) %></td>
+              <td><%= book.genre_id %></td>
+              <td><%= book.catchphrase %></td>
+            </tr>
+          </tbody>
         <% end %>
-        </tbody>
      </table>
+    </div>
   </div>
 </div>
 

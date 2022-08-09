@@ -5,34 +5,34 @@ class Member < ApplicationRecord
          :recoverable, :rememberable, :validatable
 
   def self.guest
-    find_or_create_by!(last_name: 'guestuser' ,email: 'guest@example.com') do |member|
+    find_or_create_by!(last_name: 'guestmember' ,email: 'guest@example.com') do |member|
       member.password = SecureRandom.urlsafe_base64
-      member.last_name = "guestuser"
+      member.last_name = "guestmember"
     end
   end
 
-  has_many :books
-
-
+  has_one_attached :profile_image
+  has_many :books, dependent: :destroy
+  has_many :post_comments, dependent: :destroy
+  has_many :favorites, dependent: :destroy
 
   # 自分がフォローされる（被フォロー）側の関係性
   has_many :reverse_of_relationships, class_name: "Relationship", foreign_key: "followed_id", dependent: :destroy
-  # 被フォロー関係を通じて参照→自分をフォローしている人
+  # 被フォロー関係を通じて参照一覧→自分をフォローしている人
   has_many :followers, through: :reverse_of_relationships, source: :follower
 
   # 自分がフォローする（与フォロー）側の関係性
   has_many :relationships, class_name: "Relationship", foreign_key: "follower_id", dependent: :destroy
-  # 与フォロー関係を通じて参照→自分がフォローしている人
+  # 与フォロー関係を通じて参照一覧→自分がフォローしている人
   has_many :followings, through: :relationships, source: :followed
 
-  has_one_attached :profile_image
+  # validates :first_name, presence: true
+  # validates :last_name, presence: true
+  validates :email, presence: true, uniqueness: true
+
 
   def full_name
-    last_name + first_name
-  end
-
-  def get_profile_image
-    (profile_image.attached?) ? profile_image : 'no_image.jpg'
+    first_name + last_name
   end
 
   def follow(member)
@@ -49,13 +49,13 @@ class Member < ApplicationRecord
 
   # def self.search_for(content, method)
   #   if method == 'perfect'
-  #     User.where(name: content)
+  #     member.where(name: content)
   #   elsif method == 'forward'
-  #     User.where('name LIKE ?', content + '%')
+  #     member.where('name LIKE ?', content + '%')
   #   elsif method == 'backward'
-  #     User.where('name LIKE ?', '%' + content)
+  #     member.where('name LIKE ?', '%' + content)
   #   else
-  #     User.where('name LIKE ?', '%' + content + '%')
+  #     member.where('name LIKE ?', '%' + content + '%')
   #   end
   # end
 

@@ -1,32 +1,31 @@
-<%= @books.each do |book| %>
-  <table class='table'>
-    <tr>
-      <th>タイトル</th>
-      <th><%= book.title %></th>
-    </tr>
-    <tr>
-      <th>ニックネーム</th>
-      <th><%= book.author %></th>
-    </tr>
-    <tr>
-      <th>投稿数</th>
-      <th><%= book.medium_image_url %></th>
-    </tr>
-    <tr>
-      <th>フォロー</th>
-      <th><%= book.isbn %></th>
-    </tr>
-    <tr>
-      <th>フォロー</th>
-      <th><%= book.isbn %></th>
-    </tr>
+<div class='container'>
+  <div class='row'>
+    <% @books.each do |book| %>
 
-  </table>
-<% end %>
+    <div class='col-2'>
+      <%= image_tag book.large_image_url %>
+    </div>
 
-<%#= @books.each do |book| %>
-  <%#= book.title %>
-  <%#= book.author %>
-  <%#= book.medium_image_url %>
-  <%#= book.isbn %>
-<%# end %>
+    <div class='col-10'>
+      <table class='table'>
+        <tr>
+          <th>タイトル</th>
+          <td><%= book.title %></td>
+        </tr>
+        <tr>
+          <th>著者</th>
+          <td><%= book.author %></td>
+        </tr>
+        <tr>
+          <th>出版社</th>
+          <td><%= book.publisher_name %></td>
+        </tr>
+        <tr>
+          <td><%= link_to "決定して次に進む", new_book_path(isbn: book.isbn), class: "btn btn-sm btn-success" %></td>
+        </tr>
+      </table>
+    </div>
+    <% end %>
+    <%= paginate @books %>
+  </div>
+</div>

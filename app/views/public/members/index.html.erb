@@ -7,12 +7,13 @@
       <table class='table table-hover table-inverse'>
         <thead>
           <tr>
+            <th></th>
             <th>会員名</th>
             <th>ニックネーム</th>
             <th>投稿数</th>
             <th>フォロー</th>
             <th>フォロワー</th>
-            <th>フォロー</th>
+            <th></th>
             <th></th>
           </tr>
         </thead>
@@ -20,10 +21,20 @@
         <% @members.each do |member| %>
        <tbody class="table">
           <tr>
-            <td><%= link_to member_path(member.id) do %>
-            <%#= image_tag member.get_profile_image(100,100) %>
-            <% end %></td>
-
+            <td>
+              <% if member.profile_image.attached? %>
+                <%= link_to member_path(member.id) do %>
+                  <%= image_tag member.profile_image, :size => '100x100' %>
+                <% end %>
+              <% else %>
+                <%= link_to member_path(member.id) do %>
+                  <%= image_tag "no_image.jpg", :size => '100x100', class: "img" %>
+                <% end %>
+              <% end %>
+            </td>
+            <td><%= member.full_name%></td>
+            <td><%= member.nick_name%></td>
+            <td><p><%= member.books.count %>件</p></td>
             <td><%#= link_to member.followings.count, member_followings_path(member) %><</td>
             <td><%#= link_to member.followers.count, member_followers_path(member) %></td>
           </tr>

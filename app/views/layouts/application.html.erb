@@ -13,7 +13,7 @@
   </head>
 
   <body>
-    <% if request.fullpath.include? "admin"  %>
+    <% if request.fullpath.include? "admin" %>
       <%= render 'layouts/admin_header' %>
     <% else%>
       <%= render 'layouts/member_header' %>
@@ -21,7 +21,7 @@
     <main>
       <%= yield %>
     </main>
-    <% if request.fullpath.include? "admin"  %>
+    <% if request.fullpath.include? "admin" %>
       <%= render 'layouts/admin_footer' %>
     <% else%>
       <%= render 'layouts/member_footer' %>

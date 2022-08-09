@@ -30,7 +30,7 @@ Rails.application.routes.draw do
       resource :relationships, only: [:create, :destroy]
     	get 'followings' => 'relationships#followings', as: 'followings'
     	get 'followers' => 'relationships#followers', as: 'followers'
-  end
+    end
 
     get 'books/search'
     get 'books/selection'
@@ -41,21 +41,16 @@ Rails.application.routes.draw do
 
     get '/search', to: 'searches#search'
 
-    get 'books/search'
-    get 'books/selection'
-
   end
 
   namespace :admin do
-    resources :member, only: [:index, :show, :edit, :update]
+    resources :members, only: [:index, :show, :edit, :update]
 
     get '/' => 'homes#top', as: 'top'
 
-    resources :books, only: [:destroy] do
+    resources :books, only: [:index, :destroy] do
       resources :post_comments, only: [:destroy]
     end
-
-    resources :categories, only: [:index, :create, :edit, :update]
 
     resources :genres, only: [:index, :create, :edit, :update]
 
