@@ -1,10 +1,10 @@
 <table class='table'>
   <%= form_with model:@member, local:true do |f| %>
-    <tr><%#= image_tag (@member.profile_image.attached? ? @member.profile_image.url : "no_image.jpg"), class: "image" %><%#= attachment_image_tag(member, :profile_image, :fill, 100, 100, fallback: "no_image.jpg") %>
+    <tr>
       <% if @member.profile_image.attached? %>
-        <%= image_tag @member.profile_image, :size => '200x200' %>
+        <%= image_tag @member.profile_image, size:"200x200" %>
       <% else %>
-        <%= image_tag "no_image.jpg", :size => '200x200',  class: "img" %>
+        <%= image_tag "no_image.jpg", size:"200x200",  class: "img" %>
       <% end %>
     </tr>
     <tr>
@@ -21,11 +21,11 @@
     </tr>
     <tr>
       <th>フォロー</th>
-      <th><%= link_to @member.followings.count, member_followings_path(@member) %></th>
+      <th><%#= link_to @member.followings.count, member_followings_path(@member) %></th>
     </tr>
     <tr>
       <th>フォロワー</th>
-      <th><%= link_to @member.followers.count, member_followers_path(@member) %></th>
+      <th><%#= link_to @member.followers.count, member_followers_path(@member) %></th>
     </tr>
     <tr>
       <th>紹介文</th>

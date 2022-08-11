@@ -1,0 +1,14 @@
+<table>
+  <tbody>
+      <% book.post_comments.each do |post_comments| %>
+      <tr>
+        <td><%= post_comments.comment %></td>
+        <td>
+          <% if post_comments.member == current_member %>
+            <%= link_to "Destroy", book_post_comments_path(book, post_comments), method: :delete, class: "btn btn-danger pull-right", remote: true %>
+          <% end %>
+        </td>
+      </tr>
+      <% end %>
+  </tbody>
+</table>

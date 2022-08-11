@@ -1,0 +1,47 @@
+<div class='container'>
+  <div class='row'>
+    <div class="col-sm-12 col-md-8 col-lg-5 px-5 px-sm-0 mx-auto">
+      <h1>編集画面</h1>
+      <%= form_with model: @book,local:true do |f| %>
+        <table class='table'>
+          <tr>
+            <th><p>
+              <% if @book.image_url.attached? %>
+                <%= image_tag @book.image_url, size:"240x300", class: "image" %>
+              <% else %>
+                <%= image_tag "no_image.jpg", size:"240x300",  class: "image" %>
+              <% end %>
+            </p></th>
+          </tr>
+          <tr>
+            <th><%= f.label "タイトル" %></th>
+            <td><%= @book.title %></td>
+          </tr>
+          <tr>
+            <th><%= f.label "著者" %></th>
+            <td><%= @book.author %></td>
+          </tr>
+          <tr>
+            <th><%= f.label "出版社"%></th>
+            <td><%= @book.publisher_name %></td>
+          </tr>
+          <tr>
+            <th><%= f.label "ジャンル" %></th>
+            <td><%= @book.genre.name %></td>
+          </tr>
+          <tr>
+            <th><%= f.label "オリジナルキャッチコピー" %></th>
+            <td><%= f.text_field :catchphrase, class: 'form-control book_catchphrase' %></td>
+          </tr>
+          <tr>
+            <th><%= f.label "紹介文" %></th>
+            <td><%= f.text_area :body, class: 'form-control book_body' %></td>
+          </tr>
+        </table>
+        <%= link_to '戻る', book_path(@book.id), class: "back" %>
+        <%= f.submit '保存' %>
+    <% end %>
+
+    </div>
+  </div>
+</div>

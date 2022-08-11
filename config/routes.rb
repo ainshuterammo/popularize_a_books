@@ -21,15 +21,15 @@ Rails.application.routes.draw do
 
     root :to =>"homes#top"
 
-    get "about" => "homes#about"
+    get "about", to: "homes#about"
     # get "home/about"=>"homes#about"
 
-    get 'members/unsubscribe' => 'members#unsubscribe', as: 'unsubscribe'
-    patch 'members/withdraw' => 'members#withdraw', as: 'withdraw'
+    get 'members/unsubscribe', to: 'members#unsubscribe', as: 'unsubscribe'
+    patch 'members/withdraw', to: 'members#withdraw', as: 'withdraw'
     resources :members, only: [:index,:show,:edit,:update] do
       resource :relationships, only: [:create, :destroy]
-    	get 'followings' => 'relationships#followings', as: 'followings'
-    	get 'followers' => 'relationships#followers', as: 'followers'
+    	get 'followings', to: 'relationships#followings', as: 'followings'
+    	get 'followers', to: 'relationships#followers', as: 'followers'
     end
 
     get 'books/search'
@@ -46,7 +46,7 @@ Rails.application.routes.draw do
   namespace :admin do
     resources :members, only: [:index, :show, :edit, :update]
 
-    get '/' => 'homes#top', as: 'top'
+    get '/', to: 'homes#top', as: 'top'
 
     resources :books, only: [:index, :destroy] do
       resources :post_comments, only: [:destroy]

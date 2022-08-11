@@ -5,6 +5,7 @@
     <div class="col-md-4">
       <tr>
         <th><p><%= image_tag @book.image_url, class: "image" %></p></th>
+        <td><%= f.hidden_field :image_url, :value => @book.image_url %></td>
       </tr>
     </div>
 
@@ -34,8 +35,16 @@
           </th>
           <td><%= f.hidden_field :genre_id, :value => @book.genre_id %></td>
         </tr>
+        <tr>
+          <th><%= f.label "オリジナルキャッチコピー" %></th>
+          <td><%= f.text_field :catchphrase, class: 'form-control book_catchphrase' %></td>
+        </tr>
       </table>
     </div>
+      <tr>
+        <th><%= f.label "紹介文" %></th>
+        <td><%= f.text_area :body, class: 'form-control book_body' %></td>
+      </tr>
     <%= f.submit  class: 'btn btn-success' %>
     <%= f.hidden_field :isbn, :value => @book.isbn %>
     <% end %>

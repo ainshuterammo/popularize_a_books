@@ -29,13 +29,13 @@ class Public::BooksController < ApplicationController
   end
 
   def edit
-
+    @book = Book.find(params[:id])
   end
 
   def create
     @book = current_member.books.build(book_params)
     if @book.save
-      redirect_to book_path(@book), notice: "正常に投稿されました"
+      redirect_to book_path(@book), notice: "投稿に成功しました"
     else
       @books = Book.all
       render 'index'
@@ -44,7 +44,7 @@ class Public::BooksController < ApplicationController
 
   def update
     if @book.update(book_params)
-      redirect_to book_path(@book), notice: "You have updated book successfully."
+      redirect_to book_path(@book), notice: "編集成功しました"
     else
       render "edit"
     end

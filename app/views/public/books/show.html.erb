@@ -1,32 +1,60 @@
 <div class='container'>
   <div class='row'>
-      <div class="col-md-4">
+    <div class="col-md-4">
+      <tr>
+        <td>
+          <% if @book.image_url.attached? %>
+            <%= image_tag @book.image_url, size:"240x300", class: "image" %>
+          <% else %>
+            <%= image_tag "no_image.jpg", size:"240x300",  class: "image" %>
+          <% end %>
+        </td>
+      </tr>
+    </div>
+    <div class="col-md-8">
+      <table class='table'>
         <tr>
-          <td><%= image_tag @book.book.image_url, class: "image" %></td>
+          <th><%=  "タイトル" %></th>
+          <td><%= @book.title %></td>
         </tr>
-      </div>
-      <div class="col-md-8">
-        <table class='table'>
-          <tr>
-            <th><%= label "タイトル" %></th>
-            <td><%= @book.title %></td>
-          </tr>
-          <tr>
-            <th><%= f.label "著者" %></th>
-            <td><%= @book.author %></td>
-          </tr>
-          <tr>
-            <th><%= f.label "出版社" %></th>
-            <td><%= @book.publisher_name %></td>
-          </tr>
-          <tr>
-            <th><%= f.label "ジャンル" %></th>
-            <td><%= @book.books_genre_name %></td>
-          </tr>
-        </table>
-      </div>
-   
-    <%#= render "post_comments/index", book: @book %>
-    <%#= render "post_comments/form", book: @book, post_comment: @post_comment %>
+        <tr>
+          <th><%= "著者" %></th>
+          <td><%= @book.author %></td>
+        </tr>
+        <tr>
+          <th><%=  "出版社" %></th>
+          <td><%= @book.publisher_name %></td>
+        </tr>
+        <tr>
+          <th><%=  "ジャンル" %></th>
+          <td><%= @book.genre.name %></td>
+        </tr>
+        <tr>
+          <th><%= "オリジナルキャッチコピー" %></th>
+          <td><%= @book.catchphrase %></td>
+        </tr>
+      </table>
+    </div>
+  </div>
+</div>
+<div class='container'>
+  <div class='row'>
+    <div class="md-12">
+        <%= "紹介文" %><by>
+        <%= @book.body %>
+
+      <% if @book.member == current_member %>
+        <td><%= link_to '編集', edit_book_path(@book), class: "btn btn-sm btn-success" %></td>
+        <td><%= link_to '削除', @book, method: :delete, data: { confirm: '本当に消しますか？' }, class: "btn btn-sm btn-danger" %></td>
+      <% end %>
+    </div>
+  </div>
+</div>
+<div class='container'>
+  <div class='row'>
+    <div class="md-12">
+      <%= render "public/post_comments/index", book: @book %>
+      <%= render "public/post_comments/form", book: @book, post_comment: @post_comment %>
+    </div>
   </div>
 </div>
