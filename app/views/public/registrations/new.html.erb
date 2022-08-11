@@ -13,9 +13,10 @@
           </thead>
           <tbody>
             <tr>
-              <td>名前</td>
-              <td><%= f.label :first_name, "(姓)", class: "customer_name" %> <%= f.text_field :first_name, autofocus: true, :placeholder =>"本" %></td>
-              <td><%= f.label :last_name, "(名)", class: "customer_name" %> <%= f.text_field :last_name, :placeholder =>"次郎" %></td>
+              <td><%= f.label :first_name, "名前(姓)", class: "customer_name" %></td>
+              <td colspan="2"> <%= f.text_field :first_name, autofocus: true, :placeholder =>"本" %></td>
+              <td><%= f.label :last_name, "名前(名)", class: "customer_name" %></td>
+              <td colspan="2"> <%= f.text_field :last_name, :placeholder =>"次郎" %></td>
             </tr>
             <tr>
               <td><%= f.label :email, "メールアドレス" %></td>

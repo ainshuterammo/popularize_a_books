@@ -23,7 +23,6 @@ class Member < ApplicationRecord
 
   # 自分がフォローする（与フォロー）側の関係性
   has_many :relationships, class_name: "Relationship", foreign_key: "follower_id", dependent: :destroy
-  # 与フォロー関係を通じて参照一覧→自分がフォローしている人
   has_many :followings, through: :relationships, source: :followed
 
   # validates :first_name, presence: true

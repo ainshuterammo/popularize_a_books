@@ -1,19 +1,19 @@
 <div class='container'>
   <div class='row'>
-
-    <div class='col-md-8 offset-md-1'>
+    <div class='md-12'>
       <h2>投稿一覧</h2>
 
       <table class='table table-hover table-inverse'>
         <thead>
           <tr>
             <th>ニックネーム</th>
-            <th>表紙</th>
+            <th></th>
             <th>タイトル</th>
             <th>ジャンル</th>
             <th>オリジナル<by>キャッチコピー</th>
             <% if member_signed_in? %>
-            <th>フォロー</th>
+              <th></th>
+              <th></th>
             <% end %>
           </tr>
         </thead>
@@ -30,6 +30,10 @@
               <td><%= link_to book.title, book_path(book.id) %></td>
               <td><%= book.genre.name %></td>
               <td><%= book.catchphrase %></td>
+              <% if member_signed_in? %>
+                <td id="favorite_buttons_<%= book.id %>"><%= render "public/favorites/btn", book: book %></td>
+
+              <% end %>
             </tr>
           </tbody>
         <% end %>

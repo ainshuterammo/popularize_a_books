@@ -1,6 +1,6 @@
 <h2>フォロワー一覧</h2>
 <% if @members.exists? %>
-  <%= render '/members/index', members: @members %>
+  <%= render 'public/members/index', members: @members %>
 <% else %>
   <p>メンバーはいません</p>
 <% end %>

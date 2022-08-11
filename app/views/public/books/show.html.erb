@@ -3,11 +3,11 @@
     <div class="col-md-4">
       <tr>
         <td>
-          <% if @book.image_url.attached? %>
+          <%# if @book.image_url.attached? %>
             <%= image_tag @book.image_url, size:"240x300", class: "image" %>
-          <% else %>
-            <%= image_tag "no_image.jpg", size:"240x300",  class: "image" %>
-          <% end %>
+          <%# else %>
+            <%#= image_tag "no_image.jpg", size:"240x300",  class: "image" %>
+          <%# end %>
         </td>
       </tr>
     </div>
@@ -53,6 +53,7 @@
 <div class='container'>
   <div class='row'>
     <div class="md-12">
+      <h4>コメント一覧</h4>
       <%= render "public/post_comments/index", book: @book %>
       <%= render "public/post_comments/form", book: @book, post_comment: @post_comment %>
     </div>
