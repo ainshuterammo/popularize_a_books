@@ -31,10 +31,6 @@ class Public::MembersController < ApplicationController
     @favorite_books = Book.find(favorites)
   end
 
-  def favorites
-    @books = Book.all
-  end
-
   private
 
   def member_params
