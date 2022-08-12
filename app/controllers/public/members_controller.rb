@@ -25,7 +25,15 @@ class Public::MembersController < ApplicationController
     end
   end
 
+  def favorites
+    @member = Member.find(params[:id])
+    favorites= Favorite.where(member_id: @member.id).pluck(:book_id)
+    @favorite_books = Book.find(favorites)
+  end
 
+  def favorites
+    @books = Book.all
+  end
 
   private
 

@@ -5,11 +5,18 @@
         <table class='table'>
           <tr>
             <% if @member.profile_image.attached? %>
-              <%= image_tag @member.profile_image, size:"200x200" %>
+              <td><%= image_tag @member.profile_image, size:"200x200" %></td>
             <% else %>
-              <%= image_tag "no_image.jpg", size:"200x200",  class: "img" %>
+              <td><%= image_tag "no_image.jpg", size:"200x200",  class: "img" %></td>
             <% end %>
           </tr>
+          <td>
+            <% if @member.full_name != "guestmember" %>
+              <% if current_member == @member %>
+                <td><p><%=link_to"お気に入り記事",favorites_member_path(@member) %></p></td>
+              <% end %>
+            <% end %>
+          </td>
         </table>
       </div>
       <div class='col-md-8'>
