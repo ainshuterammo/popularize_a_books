@@ -5,7 +5,11 @@ class Public::MembersController < ApplicationController
 
   def show
     @member = Member.find(params[:id])
-    @books = @member.books
+    @books = if current_member == @member
+        current_member.books
+      else
+        @member.books.where(status: :public)
+      end
     @book = Book.new
   end
 

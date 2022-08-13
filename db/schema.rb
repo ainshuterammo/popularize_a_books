@@ -62,6 +62,7 @@ ActiveRecord::Schema.define(version: 2022_08_07_152008) do
     t.string "publisher_name"
     t.string "catchphrase"
     t.text "body"
+    t.integer "status", default: 0, null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end

@@ -25,7 +25,7 @@ class Member < ApplicationRecord
   has_many :relationships, class_name: "Relationship", foreign_key: "follower_id", dependent: :destroy
   has_many :followings, through: :relationships, source: :followed
 
-  # validates :name, presence: true
+  validates :name, presence: true
   validates :email, presence: true, uniqueness: true
 
   def follow(member)
@@ -54,19 +54,3 @@ class Member < ApplicationRecord
   end
 
 end
-
-
-# 'title LIKE(?) OR explanation LIKE(?) OR animal_name LIKE(?)',
-# def self.looks(search,word)
-#     if search == "perfect_match"
-#       @user = User.where("name LIKE?","#{word}")
-#     elsif search == "forward_match"
-#       @user = User.where("name LIKE?","#{word}%")
-#     elsif search == "backward_match"
-#       @user = User.where("name LIKE?","%#{word}")
-#     elsif search == "partial_match"
-#       @user = User.where("name LIKE?","%#{word}%")
-#     else
-#       @user = User.all
-#     end
-#   end

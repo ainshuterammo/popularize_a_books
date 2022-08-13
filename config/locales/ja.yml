@@ -1,0 +1,6 @@
+ja:
+  enums:
+    book:
+      status:
+        public: "公開"
+        private: "非公開"

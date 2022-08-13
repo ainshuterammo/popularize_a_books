@@ -72,3 +72,4 @@ gem 'rails-i18n'
 gem 'net-smtp'
 gem 'net-imap'
 gem 'net-pop'
+gem "enum_help"

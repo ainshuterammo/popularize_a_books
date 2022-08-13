@@ -40,10 +40,16 @@
 <div class='container'>
   <div class='row'>
     <div class="md-12">
-        <%= "紹介文" %><by>
-        <%= @book.body %>
+        <td><%= "紹介文" %></td>
+        <td><%= @book.body %></td>
 
       <% if @book.member == current_member %>
+        <td>
+          <%= form_with model: @book, local: true do |f| %>
+            <%= render "public/books/form", f: f %>
+            <%= f.submit '変更' %>
+          <% end %>
+        </td>
         <td><%= link_to '編集', edit_book_path(@book), class: "btn btn-sm btn-success" %></td>
         <td><%= link_to '削除', @book, method: :delete, data: { confirm: '本当に消しますか？' }, class: "btn btn-sm btn-danger" %></td>
       <% end %>

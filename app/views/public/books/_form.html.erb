@@ -1,0 +1,3 @@
+<%= f.collection_radio_buttons :status, Book.statuses_i18n, :first, :second do |b| %>
+  <%= b.label { b.radio_button + b.text } %>
+<% end %>

@@ -22,10 +22,15 @@ class Public::BooksController < ApplicationController
   def show
     @book = Book.find(params[:id])
     @post_comment = PostComment.new
+    if @book.private_status? && @book.member != current_member
+      respond_to do |format|
+        format.html { redirect_to books_path, notice: 'このページにはアクセスできません' }
+      end
+    end
   end
 
   def index
-    @books = Book.all
+    @books = Book.where(status: :public)
   end
 
   def edit
@@ -69,7 +74,7 @@ class Public::BooksController < ApplicationController
   private
 
   def book_params
-    params.require(:book).permit(:member_id, :genre_id, :isbn, :title, :image_url, :author, :publisher_name, :catchphrase, :body)
+    params.require(:book).permit(:member_id, :genre_id, :isbn, :title, :image_url, :author, :publisher_name, :catchphrase, :body, :status)
   end
 
   def post_comment_params

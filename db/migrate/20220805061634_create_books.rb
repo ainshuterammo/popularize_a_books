@@ -11,6 +11,7 @@ class CreateBooks < ActiveRecord::Migration[6.1]
       t.string :publisher_name
       t.string :catchphrase
       t.text :body
+      t.integer :status,        null: false, default: 0
 
       t.timestamps
     end

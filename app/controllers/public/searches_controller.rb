@@ -5,7 +5,6 @@ class Public::SearchesController < ApplicationController
 		@model = params[:model]
 		@content = params[:content]
 		@method = params[:method]
-
 		if @model == 'member_name'
 			@records = Member.search_for(@content, @method, 'name')
 		elsif @model == 'member_nick_name'
@@ -21,6 +20,6 @@ class Public::SearchesController < ApplicationController
 				@records = @records + genre.books
 			end
 		end
-
 	end
+
 end

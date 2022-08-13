@@ -9,23 +9,13 @@ class Book < ApplicationRecord
   # validates :title,presence:true
   # validates :body,presence:true,length:{maximum:200}
 
+  enum status: { public: 0, private: 1 }, _suffix: true
+
   def favorited_by?(member)
     favorites.where(member_id: member.id).exists?
     favorites.exists?(member_id: member.id)
   end
 
-  # def self.search_for(content, method)
-  #   if method == 'perfect'
-  #     Book.where(title: content)
-  #   elsif method == 'forward'
-  #     Book.where('title LIKE ?', content+'%')
-  #   elsif method == 'backward'
-  #     Book.where('title LIKE ?', '%'+content)
-  #   else
-  #     Book.where('title LIKE ?', '%'+content+'%')
-  #   end
-  # end
-  
   def self.search_for(content, method, column)
     if method == 'perfect'
       members =  Book.where("#{column} LIKE?","#{content}")
