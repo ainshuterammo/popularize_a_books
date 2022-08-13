@@ -3,11 +3,11 @@
     <div class="col-md-4">
       <tr>
         <td>
-          <%# if @book.image_url.attached? %>
+          <% if @book.image_url %>
             <%= image_tag @book.image_url, size:"240x300", class: "image" %>
-          <%# else %>
-            <%#= image_tag "no_image.jpg", size:"240x300",  class: "image" %>
-          <%# end %>
+          <% else %>
+            <%= image_tag "no_image.jpg", size:"240x300",  class: "image" %>
+          <% end %>
         </td>
       </tr>
     </div>

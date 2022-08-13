@@ -2,6 +2,9 @@
   <div class='row'>
     <div class='md-12'>
       <h2>投稿一覧</h2>
+      <% if member_signed_in? %>
+        <%= render 'public/searches/form' %>
+      <% end %>
       <%= render "public/books/index", books: @books %>
     </div>
   </div>

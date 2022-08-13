@@ -26,13 +26,13 @@
             <% end %>
           <% end %>
         </td>
-        <td><%= member.full_name%></td>
+        <td><%= member.name%></td>
         <td><%= member.nick_name%></td>
         <td><p><%= member.books.count %>件</p></td>
         <td><%= link_to member.followings.count, member_followings_path(member) %></td>
         <td><%= link_to member.followers.count, member_followers_path(member) %></td>
         <td>
-        <% if member.full_name != "guestmember" %>
+        <% if member.name != "guestmember" %>
           <% if current_member != member %>
             <td><%= render "public/relationships/btn", member: member %></td>
           <% else %>

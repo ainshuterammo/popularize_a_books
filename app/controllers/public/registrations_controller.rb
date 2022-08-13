@@ -1,6 +1,8 @@
 # frozen_string_literal: true
 
 class Public::RegistrationsController < Devise::RegistrationsController
+  protect_from_forgery with: :exception
+  before_action :configure_permitted_parameters, if: :devise_controller?
   # before_action :configure_sign_up_params, only: [:create]
   # before_action :configure_account_update_params, only: [:update]
 
@@ -42,7 +44,18 @@ class Public::RegistrationsController < Devise::RegistrationsController
   #   super
   # end
 
-  # protected
+  protected
+
+  def configure_permitted_parameters
+    added_attrs = [ :email, :name, :password, :password_confirmation ]
+    devise_parameter_sanitizer.permit :sign_up, keys: added_attrs
+    # devise_parameter_sanitizer.permit :account_update, keys: added_attrs
+    # devise_parameter_sanitizer.permit :sign_in, keys: added_attrs
+  end
+
+  # def member_params
+  #   params.permit(:name, :email, :password, :password_confirmation)
+  # end
 
   # If you have extra params to permit, append them to the sanitizer.
   # def configure_sign_up_params

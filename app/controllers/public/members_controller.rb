@@ -34,12 +34,12 @@ class Public::MembersController < ApplicationController
   private
 
   def member_params
-    params.require(:member).permit(:first_name, :last_name, :nick_name, :self_introduction, :is_deleted, :profile_image)
+    params.require(:member).permit(:name, :nick_name, :self_introduction, :is_deleted, :profile_image)
   end
 
   def ensure_guest_member
     @member = Member.find(params[:id])
-    if @member.full_name == "guestmember"
+    if @member.name == "guestmember"
       redirect_to member_path(current_member) , notice: 'ゲストユーザーはプロフィール編集画面へ遷移できません。'
     end
   end

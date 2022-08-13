@@ -6,11 +6,11 @@
         <table class='table'>
           <tr>
             <th><p>
-              <%# if @book.image_url.attached? %>
+              <% if @book.image_url %>
                 <%= image_tag @book.image_url, size:"240x300", class: "image" %>
-              <%# else %>
-                <%#= image_tag "no_image.jpg", size:"240x300",  class: "image" %>
-              <%# end %>
+              <% else %>
+                <%= image_tag "no_image.jpg", size:"240x300",  class: "image" %>
+              <% end %>
             </p></th>
           </tr>
           <tr>

@@ -7,7 +7,7 @@ class Member < ApplicationRecord
   def self.guest
     find_or_create_by!(last_name: 'guestmember' ,email: 'guest@example.com') do |member|
       member.password = SecureRandom.urlsafe_base64
-      member.last_name = "guestmember"
+      member.name = "guestmember"
     end
   end
 
@@ -25,14 +25,8 @@ class Member < ApplicationRecord
   has_many :relationships, class_name: "Relationship", foreign_key: "follower_id", dependent: :destroy
   has_many :followings, through: :relationships, source: :followed
 
-  # validates :first_name, presence: true
-  # validates :last_name, presence: true
+  # validates :name, presence: true
   validates :email, presence: true, uniqueness: true
-
-
-  def full_name
-    first_name + last_name
-  end
 
   def follow(member)
     relationships.create(followed_id: member.id)
@@ -46,16 +40,33 @@ class Member < ApplicationRecord
     followings.include?(member)
   end
 
-  # def self.search_for(content, method)
-  #   if method == 'perfect'
-  #     member.where(name: content)
-  #   elsif method == 'forward'
-  #     member.where('name LIKE ?', content + '%')
-  #   elsif method == 'backward'
-  #     member.where('name LIKE ?', '%' + content)
-  #   else
-  #     member.where('name LIKE ?', '%' + content + '%')
-  #   end
-  # end
+  def self.search_for(content, method, column)
+    if method == 'perfect'
+      members =  Member.where("#{column} LIKE?","#{content}")
+      return members
+    elsif method == 'forward'
+      Member.where("#{column} LIKE ?", "#{content}" + '%')
+    elsif method == 'backward'
+      Member.where("#{column} LIKE ?", '%' + "#{content}")
+    else
+      Member.where("#{column} LIKE ?", '%' + "#{content}" + '%')
+    end
+  end
 
 end
+
+
+# 'title LIKE(?) OR explanation LIKE(?) OR animal_name LIKE(?)',
+# def self.looks(search,word)
+#     if search == "perfect_match"
+#       @user = User.where("name LIKE?","#{word}")
+#     elsif search == "forward_match"
+#       @user = User.where("name LIKE?","#{word}%")
+#     elsif search == "backward_match"
+#       @user = User.where("name LIKE?","%#{word}")
+#     elsif search == "partial_match"
+#       @user = User.where("name LIKE?","%#{word}%")
+#     else
+#       @user = User.all
+#     end
+#   end

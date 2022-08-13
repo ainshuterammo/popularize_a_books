@@ -6,8 +6,6 @@ class Book < ApplicationRecord
   has_many :post_comments, dependent: :destroy
   has_many :favorites, dependent: :destroy
 
-  # has_one_attached :image_url
-
   # validates :title,presence:true
   # validates :body,presence:true,length:{maximum:200}
 
@@ -16,15 +14,28 @@ class Book < ApplicationRecord
     favorites.exists?(member_id: member.id)
   end
 
-  def self.search_for(content, method)
+  # def self.search_for(content, method)
+  #   if method == 'perfect'
+  #     Book.where(title: content)
+  #   elsif method == 'forward'
+  #     Book.where('title LIKE ?', content+'%')
+  #   elsif method == 'backward'
+  #     Book.where('title LIKE ?', '%'+content)
+  #   else
+  #     Book.where('title LIKE ?', '%'+content+'%')
+  #   end
+  # end
+  
+  def self.search_for(content, method, column)
     if method == 'perfect'
-      Book.where(title: content)
+      members =  Book.where("#{column} LIKE?","#{content}")
+      return members
     elsif method == 'forward'
-      Book.where('title LIKE ?', content+'%')
+      Book.where("#{column} LIKE ?", "#{content}" + '%')
     elsif method == 'backward'
-      Book.where('title LIKE ?', '%'+content)
+      Book.where("#{column} LIKE ?", '%' + "#{content}")
     else
-      Book.where('title LIKE ?', '%'+content+'%')
+      Book.where("#{column} LIKE ?", '%' + "#{content}" + '%')
     end
   end
 

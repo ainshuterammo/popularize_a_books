@@ -1,0 +1,10 @@
+<% if @model == 'member_name' || @model == 'member_nick_name' %>
+	<h3>members search for "<%= @content %>"</h3>
+  <%= render 'public/members/index', members: @records %>
+<% elsif @model == 'book_title' || @model == 'book_body'  %>
+	<h3>Books search for "<%= @content %>"</h3>
+  <%= render 'public/books/index', books: @records %>
+<% elsif @model == 'genre' %>
+	<h3>Books search for "<%= @content %>"</h3>
+  <%= render 'public/books/index', books: @records %>
+<% end %>

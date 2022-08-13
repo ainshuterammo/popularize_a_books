@@ -11,7 +11,7 @@
             <% end %>
           </tr>
           <td>
-            <% if @member.full_name != "guestmember" %>
+            <% if @member.name != "guestmember" %>
               <% if current_member == @member %>
                 <td><p><%=link_to"お気に入り記事",favorites_member_path(@member) %></p></td>
               <% end %>
@@ -23,7 +23,7 @@
         <table class='table'>
           <tr>
             <th>名前</th>
-            <td><%= @member.full_name %></td>
+            <td><%= @member.name %></td>
           </tr>
           <tr>
             <th>ニックネーム</th>
@@ -42,7 +42,7 @@
             <td><%= link_to @member.followers.count, member_followers_path(@member) %></td>
           </tr>
           <td>
-            <% if @member.full_name != "guestmember" %>
+            <% if @member.name != "guestmember" %>
               <% if current_member != @member %>
                 <td><%= render "public/relationships/btn", member: @member %></td>
               <% else %>
@@ -62,8 +62,6 @@
       </div>
     </div>
   <% end %>
-</div>
-
 </div>
 
 

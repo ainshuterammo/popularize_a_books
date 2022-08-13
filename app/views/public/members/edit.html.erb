@@ -6,12 +6,11 @@
       <%#= render 'layouts/error_messages', obj: @member %>
       <div class="form-group">
         <%= f.label "名前" %>
-        <%= f.text_field :first_name, class: "form-control full_name" %>
-        <%= f.text_field :last_name, class: "form-control full_name" %>
+        <%= f.text_field :name, class: "form-control name" %>
       </div>
       <div class="form-group">
         <%= f.label "ニックネーム" %>
-        <%= f.text_field :nick_name, class: "form-control full_name" %>
+        <%= f.text_field :nick_name, class: "form-control name" %>
       </div>
      <div class="form-group">
         <%= f.label "プロフィール画像" %>

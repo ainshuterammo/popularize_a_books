@@ -29,9 +29,9 @@
                 <% end %>
               </li>
               <li>
-                <%#= link_to book_path(current_page),class: 'nav-link text-black' do %>
+                <%= link_to member_path(current_member.id),class: 'nav-link text-black' do %>
                   <i class="fas fa-home"></i> マイページ
-                <%# end %>
+                <% end %>
               </li>
               <li>
                 <%= link_to destroy_member_session_path, method: :delete,class: 'nav-link text-black' do %>
@@ -61,12 +61,6 @@
               </li>
             <% end %>
         </ul>
-        <form class="navbar-form navbar-left" role="search">
-    				<div class="form-group">
-    					<input type="text" class="form-control" placeholder="検索キーワード">
-    				</div>
-    				<button type="submit" class="btn btn-default">検索</button>
-    			</form>
       </div>
     </div>
   </nav>

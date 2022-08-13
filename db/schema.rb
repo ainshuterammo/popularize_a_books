@@ -89,8 +89,7 @@ ActiveRecord::Schema.define(version: 2022_08_07_152008) do
   create_table "members", force: :cascade do |t|
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
-    t.string "first_name", default: "", null: false
-    t.string "last_name", default: "", null: false
+    t.string "name", default: "", null: false
     t.string "nick_name", default: "デフォルト", null: false
     t.text "self_introduction", default: "よろしくお願いします。"
     t.boolean "is_deleted", default: false, null: false

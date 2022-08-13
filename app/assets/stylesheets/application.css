@@ -15,6 +15,18 @@
  */
 
 
-/* body {*/
-/*background-color: #ffe4c4;*/
-/*}*/
+ main {
+  background-color: #f5deb3;
+  color: #b26400;
+ }
+
+ header {
+  background-color: #d2b48c;
+ }
+ 
+ footer {
+  background-color: #d2b48c;
+ }
+ a {
+  color: #cd827d;
+ }
