@@ -1,5 +1,6 @@
 class Admin::BooksController < ApplicationController
-  
+
+
   def show
     @book = Book.find(params[:id])
     @post_comment = PostComment.new
@@ -15,10 +16,11 @@ class Admin::BooksController < ApplicationController
   end
 
   def destroy
+    @book = Book.find(params[:id])
     @book.destroy
-    redirect_to books_path
+    redirect_to admin_books_path
   end
-  
+
   private
 
   def book_params
@@ -28,5 +30,5 @@ class Admin::BooksController < ApplicationController
   def post_comment_params
     params.require(:post_comment).permit(:comment)
   end
-  
+
 end

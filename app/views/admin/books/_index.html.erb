@@ -17,12 +17,12 @@
     <tbody class="table">
       <tr>
         <td>
-          <%= link_to member_path(book.member_id) do %>
+          <%= link_to admin_member_path(book.member_id) do %>
             <%= book.member.nick_name %>
           <% end %>
         </td>
         <td><%= render "public/books/image_url", book: book %></td>
-        <td><%= link_to book.title, book_path(book.id) %></td>
+        <td><%= link_to book.title, admin_book_path(book.id) %></td>
         <td><%= book.genre.name %></td>
         <td><%= book.catchphrase %></td>
         <% if member_signed_in? %>

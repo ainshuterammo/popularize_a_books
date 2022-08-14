@@ -1,5 +1,6 @@
 class Public::BooksController < ApplicationController
 
+
   def new
     isbn = params[:isbn]
     book = RakutenWebService::Books::Book.search(isbn: isbn).first
@@ -58,6 +59,7 @@ class Public::BooksController < ApplicationController
   end
 
   def destroy
+    @book = Book.find(params[:id])
     @book.destroy
     redirect_to books_path
   end
