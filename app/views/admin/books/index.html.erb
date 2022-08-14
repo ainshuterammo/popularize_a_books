@@ -1,0 +1,10 @@
+<div class='container'>
+  <div class='row'>
+    <div class='md-12'>
+      <h2>投稿一覧</h2>
+      <%= render "admin/books/index", books: @books %>
+      <%= paginate @books %>
+    </div>
+  </div>
+</div>
+

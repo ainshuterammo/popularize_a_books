@@ -1,31 +1,37 @@
 Rails.application.routes.draw do
 
-  devise_scope :member do
-    post 'members/guest_sign_in', to: 'public/sessions#guest_sign_in'
+  # 管理者用
+  devise_for :admin, skip: [:registrations, :passwords] ,controllers: {
+    sessions: "admin/sessions"
+  }
+
+  namespace :admin do
+    resources :members, only: [:index, :show, :edit, :update]
+    get '/', to: 'homes#top', as: 'top'
+    resources :books, only: [:show, :index, :destroy] do
+      resources :post_comments, only: [:destroy]
+    end
+    resources :genres, only: [:index, :create, :edit, :update]
   end
 
   # 顧客用
-  # URL /members/sign_in ...
   devise_for :members,skip: [:passwords], controllers: {
     registrations: "public/registrations",
     sessions: 'public/sessions'
   }
 
-  # 管理者用
-  # URL /admin/sign_in ...
-  devise_for :admin, skip: [:registrations, :passwords] ,controllers: {
-    sessions: "admin/sessions"
-  }
+  devise_scope :member do
+    post 'members/guest_sign_in', to: 'public/sessions#guest_sign_in'
+  end
 
   scope module: :public do
-
     root :to =>"homes#top"
 
-    get "about", to: "homes#about"
-    # get "home/about"=>"homes#about"
+    get "home/about"=>"homes#about", as: 'about'
 
-    get 'members/unsubscribe', to: 'members#unsubscribe', as: 'unsubscribe'
-    patch 'members/withdraw', to: 'members#withdraw', as: 'withdraw'
+    get 'members/unsubscribe', to: 'members#unsubscribe', as: 'confirm_unsubscribe'
+    patch 'members/withdraw', to: 'members#withdraw', as: 'withdraw_member'
+
     resources :members, only: [:index,:show,:edit,:update] do
       resource :relationships, only: [:create, :destroy]
     	get 'followings', to: 'relationships#followings', as: 'followings'
@@ -43,19 +49,6 @@ Rails.application.routes.draw do
     end
 
     get '/search', to: 'searches#search'
-
-  end
-
-  namespace :admin do
-    resources :members, only: [:index, :show, :edit, :update]
-
-    get '/', to: 'homes#top', as: 'top'
-
-    resources :books, only: [:index, :destroy] do
-      resources :post_comments, only: [:destroy]
-    end
-
-    resources :genres, only: [:index, :create, :edit, :update]
 
   end
 

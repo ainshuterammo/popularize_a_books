@@ -30,7 +30,8 @@ class Public::BooksController < ApplicationController
   end
 
   def index
-    @books = Book.where(status: :public)
+    # @books = Kaminari.paginate_array(Book.where(status: :public).to_a).page(params[:page]).per(10)
+    @books = Book.where(status: :public).page(params[:page]).per(10)
   end
 
   def edit

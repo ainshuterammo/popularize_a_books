@@ -6,16 +6,19 @@ class Public::MembersController < ApplicationController
   def show
     @member = Member.find(params[:id])
     @books = if current_member == @member
-        current_member.books
+        Kaminari.paginate_array(current_member.books.to_a).page(params[:page]).per(5)
+        # current_member.books
       else
-        @member.books.where(status: :public)
+        Kaminari.paginate_array(@member.books.where(status: :public).to_a).page(params[:page]).per(5)
+        # @member.books.where(status: :public)
       end
     @book = Book.new
   end
 
   def index
-    @members = Member.all
+    # @members = Member.all
     @book = Book.new
+    @members = Kaminari.paginate_array(Member.all.to_a).page(params[:page]).per(10)
   end
 
   def edit
@@ -35,6 +38,15 @@ class Public::MembersController < ApplicationController
     @favorite_books = Book.find(favorites)
   end
 
+  def unsubscribe
+  end
+
+  def withdraw
+    current_member.update(is_deleted: true)
+    reset_session
+    redirect_to root_path
+  end
+
   private
 
   def member_params
@@ -44,14 +56,14 @@ class Public::MembersController < ApplicationController
   def ensure_guest_member
     @member = Member.find(params[:id])
     if @member.name == "guestmember"
-      redirect_to member_path(current_member) , notice: 'ゲストユーザーはプロフィール編集画面へ遷移できません。'
+      redirect_to member_path(current_member.id) , notice: 'ゲストユーザーはプロフィール編集画面へ遷移できません。'
     end
   end
 
   def ensure_correct_member
     @member = Member.find(params[:id])
     unless @member == current_member
-      redirect_to member_path(current_member)
+      redirect_to member_path(current_member.id)
     end
   end
 

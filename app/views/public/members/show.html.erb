@@ -61,6 +61,13 @@
         <td><%= @member.self_introduction %></td>
       </div>
     </div>
+    <div class='row'>
+      <div class='md-12'>
+        <th>投稿一覧</th>
+        <td><%= render "public/members/book_show", books: @books %></td>
+        <%= paginate @books %>
+      </div>
+    </div>
   <% end %>
 </div>
 

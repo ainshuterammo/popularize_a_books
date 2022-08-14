@@ -1,6 +1,51 @@
 ja:
+  activerecord:
+    attributes:
+      member:
+        email: "メールアドレス"
+        name: "姓名"
+        nick_name: "ニックネーム"
+        self_introduction: "自己紹介文"
+        password: "パスワード"
+        password_confirmation: "パスワード(確認用)"
+        current_password: "現在のパスワード"
   enums:
     book:
+      title: "タイトル"
+      image_url: "表紙"
+      author: "著者"
+      publisher_name: "出版社"
+      catchphrase: "オリジナルキャッチコピー"
+      body: "紹介文"
       status:
         public: "公開"
         private: "非公開"
+    genre:
+      name: "ジャンル名"
+    post_comment:
+      comment: "コメント"
+  views:
+    pagination:
+      first: "≪"
+      previous: "<"
+      next: ">"
+      last: "≫"
+  devise:
+    failure:
+      already_authenticated: "既にログイン済みです。"
+      invalid: "メールアドレスまたはパスワードが正しくありません。"
+      not_found_in_database: "メールアドレスまたはパスワードが正しくありません。"
+      unauthenticated: "続けるにはログインが必要です。"
+    registrations:
+      signed_up: "会員登録が完了しました。ようこそNaganoCakeへ！"
+      updated: "パスワードの更新が完了しました。"
+    sessions:
+      signed_in: "ログインが完了しました。"
+      signed_out: "ログアウトが完了しました。"
+      already_signed_out: "ログアウトが完了しました。"
+  errors:
+    messages:
+      already_confirmed: "メールアドレスは既に登録されています。"
+      not_saved:
+        one: "エラーが発生しました。以下ご確認お願いいたします。"
+        other: "エラーが発生しました。以下ご確認お願いいたします。"

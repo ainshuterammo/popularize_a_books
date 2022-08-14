@@ -1,0 +1,39 @@
+<section class="inner">
+	<h2 class="section-ttl"><%= @member.name %>さんのページ</h2>
+	<table class="member_info">
+		<thead>
+			<th></th>
+			<th></th>
+			<th></th>
+		</thead>
+		<tbody>
+			<tr>
+				<td>会員ID</td>
+				<td colspan="2"><%= @member.id %></td>
+			</tr>
+			<tr>
+				<td>名前</td>
+				<td><%= @member.name %></td>
+			</tr>
+			<tr>
+				<td>メールアドレス</td>
+				<td colspan="2"><%= @member.email %></td>
+			</tr>
+			<tr>
+				<td>会員ステータス</td>
+				<td colspan="2">
+					<% unless @member.is_deleted? %>
+						<span class="text-active">有効</span>
+					<% else %>
+						<span class="text-invalid">退会済み</span>
+					<% end %>
+				</td>
+			</tr>
+			<tr>
+				<td><%= link_to "編集", edit_admin_member_path(@member), class: "btn btn-success" %></td>
+				<td><%= link_to "投稿一覧を見る", admin_books_path(@member), class: "btn btn-primary" %></td>
+			</tr>
+		</tbody>
+	</table>
+
+</section>

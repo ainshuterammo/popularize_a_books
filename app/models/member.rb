@@ -5,7 +5,7 @@ class Member < ApplicationRecord
          :recoverable, :rememberable, :validatable
 
   def self.guest
-    find_or_create_by!(last_name: 'guestmember' ,email: 'guest@example.com') do |member|
+    find_or_create_by!(name: 'guestmember' ,email: 'guest@example.com') do |member|
       member.password = SecureRandom.urlsafe_base64
       member.name = "guestmember"
     end

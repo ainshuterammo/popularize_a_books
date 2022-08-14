@@ -6,6 +6,7 @@
         <%= render 'public/searches/form' %>
       <% end %>
       <%= render "public/members/index", members: @members %>
+      <%= paginate @members %>
     </div>
   </div>
 </div>
