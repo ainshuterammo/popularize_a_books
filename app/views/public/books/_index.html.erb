@@ -22,8 +22,8 @@
           <% end %>
         </td>
         <td><%= render "public/books/image_url", book: book %></td>
-        <td><%= link_to book.title, book_path(book.id) %></td>
-        <td><%= book.genre.name %></td>
+        <td><%= link_to book.title.truncate(20, separator: '...'), book_path(book.id) %></td>
+        <td><%= book.genre.name.truncate(10, separator: '...') %></td>
         <td><%= book.catchphrase %></td>
         <% if member_signed_in? %>
           <td id="favorite_buttons_<%= book.id %>"><%= render "public/favorites/btn", book: book %></td>

@@ -1,7 +1,7 @@
 <div class='container'>
   <div class='row'>
-    <div class='col-md-8 offset-md-1'>
-      <h3>search-box</h3>
+    <div class='col-md-6 offset-md-3'>
+      <h3>本の検索</h3>
       <%= form_with url: books_selection_path, method: :get, local: true do |f| %>
         <%= f.text_field :keyword, class: "form-control" %>
         <%= f.submit '本の題名を検索', class: "form-control btn btn-success" %>

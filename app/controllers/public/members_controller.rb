@@ -7,16 +7,13 @@ class Public::MembersController < ApplicationController
     @member = Member.find(params[:id])
     @books = if current_member == @member
         Kaminari.paginate_array(current_member.books.to_a).page(params[:page]).per(5)
-        # current_member.books
       else
         Kaminari.paginate_array(@member.books.where(status: :public).to_a).page(params[:page]).per(5)
-        # @member.books.where(status: :public)
       end
     @book = Book.new
   end
 
   def index
-    # @members = Member.all
     @book = Book.new
     @members = Kaminari.paginate_array(Member.all.to_a).page(params[:page]).per(10)
   end

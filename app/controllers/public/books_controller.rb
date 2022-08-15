@@ -1,5 +1,5 @@
 class Public::BooksController < ApplicationController
-
+  before_action :find_book, only: [:show, :edit, :update, :destroy]
 
   def new
     isbn = params[:isbn]
@@ -10,7 +10,6 @@ class Public::BooksController < ApplicationController
       genre.name = genre_result["parents"][0]["booksGenreName"]
       genre.save
     end
-    # byebug
     @book = Book.new
     @book.isbn = book.isbn
     @book.title = book.title
@@ -21,7 +20,6 @@ class Public::BooksController < ApplicationController
   end
 
   def show
-    @book = Book.find(params[:id])
     @post_comment = PostComment.new
     if @book.private_status? && @book.member != current_member
       respond_to do |format|
@@ -36,7 +34,6 @@ class Public::BooksController < ApplicationController
   end
 
   def edit
-    @book = Book.find(params[:id])
   end
 
   def create
@@ -50,7 +47,6 @@ class Public::BooksController < ApplicationController
   end
 
   def update
-    @book = Book.find(params[:id])
     if @book.update(book_params)
       redirect_to book_path(@book), notice: "編集成功しました"
     else
@@ -59,7 +55,6 @@ class Public::BooksController < ApplicationController
   end
 
   def destroy
-    @book = Book.find(params[:id])
     @book.destroy
     redirect_to books_path
   end
@@ -73,22 +68,21 @@ class Public::BooksController < ApplicationController
     end
   end
 
-
   private
+
+  def find_book
+    @book = Book.find(params[:id])
+  end
+
+  # def ensure_correct_member
+  #   @book = Book.find(params[:id])
+  #   unless @book.member == current_member
+  #     redirect_to books_path
+  #   end
+  # end
 
   def book_params
     params.require(:book).permit(:member_id, :genre_id, :isbn, :title, :image_url, :author, :publisher_name, :catchphrase, :body, :status)
-  end
-
-  def post_comment_params
-    params.require(:post_comment).permit(:comment)
-  end
-
-  def ensure_correct_member
-    @book = Book.find(params[:id])
-    unless @book.member == current_member
-      redirect_to books_path
-    end
   end
 
 end

@@ -27,7 +27,9 @@ Rails.application.routes.draw do
   scope module: :public do
     root :to =>"homes#top"
 
-    get "home/about"=>"homes#about", as: 'about'
+    get 'home/about', to: 'homes#about', as: 'about'
+
+    get 'home/terms_of_use', to: 'homes#terms_of_use', as: 'terms_of_use'
 
     get 'members/unsubscribe', to: 'members#unsubscribe', as: 'confirm_unsubscribe'
     patch 'members/withdraw', to: 'members#withdraw', as: 'withdraw_member'

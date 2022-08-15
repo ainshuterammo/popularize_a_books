@@ -1,14 +1,16 @@
 class Admin::MembersController < ApplicationController
-
   before_action :find_user, only: [:show, :edit, :update]
 
   def index
     @members = Member.page(params[:page])
   end
 
-  def show; end
+  # def show; end
+  def show
+  end
 
-  def edit; end
+  def edit
+  end
 
   def update
     if @member.update(member_params)

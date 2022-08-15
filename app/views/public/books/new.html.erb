@@ -1,52 +1,51 @@
 <div class='container'>
-  <div class='row'>
-    <%= form_with model: @book do |f| %>
-
-    <div class="col-md-4">
-      <tr>
-        <th><p><%= image_tag @book.image_url, class: "image" %></p></th>
-        <td><%= f.hidden_field :image_url, :value => @book.image_url %></td>
-      </tr>
-    </div>
-
-    <div class="col-md-8">
-      <table class='table'>
+  <%= form_with model: @book do |f| %>
+    <div class='row'>
+      <div class="col-md-4">
         <tr>
-          <th><%= f.label "タイトル" %>
-              <p><%= @book.title %></p>
-          </th>
-          <td><%= f.hidden_field :title, :value => @book.title %></td>
+          <th><p><%= image_tag @book.image_url, class: "image" %></p></th>
+          <td><%= f.hidden_field :image_url, :value => @book.image_url %></td>
         </tr>
+      </div>
+  
+      <div class="col-md-8">
+        <table class='table'>
+          <tr>
+            <th><%= f.label "タイトル" %>
+                <p><%= @book.title %></p>
+            </th>
+            <td><%= f.hidden_field :title, :value => @book.title %></td>
+          </tr>
+          <tr>
+            <th><%= f.label "著者" %>
+                <p><%= @book.author %></p>
+            </th>
+            <td><%= f.hidden_field :author, :value => @book.author %></td>
+          </tr>
+          <tr>
+            <th><%= f.label "出版社" %>
+                <p><%= @book.publisher_name %></p>
+            </th>
+            <td><%= f.hidden_field :publisher_name, :value => @book.publisher_name %></td>
+          </tr>
+          <tr>
+            <th><%= f.label "ジャンル" %>
+                <p><%= @book.genre.name %></p>
+            </th>
+            <td><%= f.hidden_field :genre_id, :value => @book.genre_id %></td>
+          </tr>
+          <tr>
+            <th><%= f.label "オリジナルキャッチコピー" %></th>
+            <td><%= f.text_field :catchphrase, class: 'form-control book_catchphrase' %></td>
+          </tr>
+        </table>
+      </div>
         <tr>
-          <th><%= f.label "著者" %>
-              <p><%= @book.author %></p>
-          </th>
-          <td><%= f.hidden_field :author, :value => @book.author %></td>
+          <th><%= f.label "紹介文" %></th>
+          <td><%= f.text_area :body, class: 'form-control book_body' %></td>
         </tr>
-        <tr>
-          <th><%= f.label "出版社" %>
-              <p><%= @book.publisher_name %></p>
-          </th>
-          <td><%= f.hidden_field :publisher_name, :value => @book.publisher_name %></td>
-        </tr>
-        <tr>
-          <th><%= f.label "ジャンル" %>
-              <p><%= @book.genre.name %></p>
-          </th>
-          <td><%= f.hidden_field :genre_id, :value => @book.genre_id %></td>
-        </tr>
-        <tr>
-          <th><%= f.label "オリジナルキャッチコピー" %></th>
-          <td><%= f.text_field :catchphrase, class: 'form-control book_catchphrase' %></td>
-        </tr>
-      </table>
-    </div>
-      <tr>
-        <th><%= f.label "紹介文" %></th>
-        <td><%= f.text_area :body, class: 'form-control book_body' %></td>
-      </tr>
-    <%= f.submit  class: 'btn btn-success' %>
-    <%= f.hidden_field :isbn, :value => @book.isbn %>
-    <% end %>
-  </div>
+      <%= f.submit  class: 'btn btn-success' %>
+      <%= f.hidden_field :isbn, :value => @book.isbn %>
+     </div>
+  <% end %>
 </div>

@@ -17,16 +17,24 @@
 
  main {
   background-color: #f5deb3;
-  color: #b26400;
  }
 
  header {
   background-color: #d2b48c;
  }
- 
+
  footer {
   background-color: #d2b48c;
  }
- a {
-  color: #cd827d;
+
+ h2 {
+  color: #DE5D71;
  }
+
+ th {
+  color: #DE5D71;
+ }
+
+ .pagination {
+  justify-content: center;
+}

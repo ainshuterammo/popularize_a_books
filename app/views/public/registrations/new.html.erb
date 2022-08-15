@@ -1,43 +1,44 @@
-<div class='container'>
+<div class="container">
   <div class='row'>
-    <section class="inner">
-      <h2 class="section-ttl">新規会員登録</h2>
-
-       <%= form_with model: @member, url: registration_path(resource_name), local: true do |f| %>
-        <%= render 'layouts/error_messages', resource: @member %>
-        <table class="customer_info customer_form">
-          <thead>
-            <th></th>
-            <th></th>
-            <th></th>
-          </thead>
-          <tbody>
-            <tr>
-              <td><%= f.label :name, "名前", class: "name" %></td>
-              <td colspan="2"> <%= f.text_field :name, autofocus: true, :placeholder =>"本次郎" %></td>
-            </tr>
-            <tr>
-              <td><%= f.label :email, "メールアドレス" %></td>
-              <td colspan="2"><%= f.email_field :email, autocomplete: "email" %></td>
-            </tr>
-            <tr>
-              <td><%= f.label :password, "パスワード(#{@minimum_password_length}文字以上)" %></td>
-              <td colspan="2"><%= f.password_field :password, autocomplete: "new-password" %></td>
-            </tr>
-            <tr>
-              <td><%= f.label :password_confirmation, "パスワード(確認用)" %></td>
-              <td colspan="2"><%= f.password_field :password_confirmation, autocomplete: "new-password" %></td>
-            </tr>
-            <tr>
-              <td></td>
-              <td colspan="2"><%= f.submit "新規登録", class: "btn btn-success" %></td>
-            </tr>
-          </tbody>
-        </table>
-      <% end %>
-
-      <h2 class="section-ttl">既に登録済みの方</h2>
-      <p><%= link_to "こちら", new_member_session_path, class: "underline" %>からログインしてください。</p>
-    </section>
+    <div class="col-md-10 px-5 px-sm-0 mx-auto mt-4">
+      <section class="inner">
+        <h2 class="section-ttl">新規会員登録</h2>
+  
+         <%= form_with model: @member, url: registration_path(resource_name), local: true do |f| %>
+          <%= render 'layouts/error_messages', resource: @member %>
+          <table class="customer_info customer_form">
+            <thead>
+              <th></th>
+              <th></th>
+              <th></th>
+            </thead>
+            <tbody>
+              <tr>
+                <td><%= f.label :name, "名前", class: "name" %></td>
+                <td colspan="2"> <%= f.text_field :name, autofocus: true, :placeholder =>"本次郎" %></td>
+              </tr>
+              <tr>
+                <td><%= f.label :email, "メールアドレス" %></td>
+                <td colspan="2"><%= f.email_field :email, autocomplete: "email" %></td>
+              </tr>
+              <tr>
+                <td><%= f.label :password, "パスワード(#{@minimum_password_length}文字以上)" %></td>
+                <td colspan="2"><%= f.password_field :password, autocomplete: "new-password" %></td>
+              </tr>
+              <tr>
+                <td><%= f.label :password_confirmation, "パスワード(確認用)" %></td>
+                <td colspan="2"><%= f.password_field :password_confirmation, autocomplete: "new-password" %></td>
+              </tr>
+              <tr>
+                <td colspan="2"><%= f.submit "新規登録", class: "btn btn-success" %></td>
+              </tr>
+            </tbody>
+          </table>
+        <% end %>
+  
+        <h2 class="section-ttl">既に登録済みの方</h2>
+        <p><%= link_to "こちら", new_member_session_path, class: "underline" %>からログインしてください。</p>
+      </section>
+    </div>
   </div>
 </div>

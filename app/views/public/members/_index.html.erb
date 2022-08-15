@@ -18,11 +18,11 @@
         <td>
           <% if member.profile_image.attached? %>
             <%= link_to member_path(member.id) do %>
-              <%= image_tag member.profile_image, :size => '100x100' %>
+              <%= image_tag member.profile_image, :size => '80x80' %>
             <% end %>
           <% else %>
             <%= link_to member_path(member.id) do %>
-              <%= image_tag "no_image.jpg", :size => '100x100', class: "img" %>
+              <%= image_tag "no_image.jpg", :size => '80x80', class: "img" %>
             <% end %>
           <% end %>
         </td>
@@ -34,11 +34,9 @@
         <td>
         <% if member.name != "guestmember" %>
           <% if current_member != member %>
-            <td><%= render "public/relationships/btn", member: member %></td>
+            <%= render "public/relationships/btn", member: member %>
           <% else %>
-            <%= link_to  member_path(member), class: "btn btn-outline-secondary btn-block member_#{member.id}" do %>
-              <i>マイページ</i>
-            <% end %>
+            <%= link_to "マイページ", member_path(member), class: "btn btn-outline-warning" %>
           <% end %>
         <% end %>
         </td>

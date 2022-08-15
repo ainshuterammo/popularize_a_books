@@ -3,7 +3,7 @@
     <% @books.each do |book| %>
 
     <div class='col-2'>
-      <%= image_tag book.large_image_url %>
+      <%= image_tag book.large_image_url, :size => '160x200' %>
     </div>
 
     <div class='col-10'>

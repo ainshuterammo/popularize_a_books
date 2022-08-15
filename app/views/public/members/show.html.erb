@@ -2,22 +2,20 @@
   <%= form_with model:@member, local:true do |f| %>
     <div class='row'>
       <div class='col-md-4'>
-        <table class='table'>
-          <tr>
-            <% if @member.profile_image.attached? %>
-              <td><%= image_tag @member.profile_image, size:"200x200" %></td>
-            <% else %>
-              <td><%= image_tag "no_image.jpg", size:"200x200",  class: "img" %></td>
+        <div class='table'>
+          <% if @member.profile_image.attached? %>
+            <%= image_tag @member.profile_image, size:"200x200" %>
+          <% else %>
+            <%= image_tag "no_image.jpg", size:"200x200",  class: "img" %>
+          <% end %>
+        </div>
+        <div>
+          <% if @member.name != "guestmember" %>
+            <% if current_member == @member %>
+              <td><p><%=link_to"お気に入り記事",favorites_member_path(@member) %></p></td>
             <% end %>
-          </tr>
-          <td>
-            <% if @member.name != "guestmember" %>
-              <% if current_member == @member %>
-                <td><p><%=link_to"お気に入り記事",favorites_member_path(@member) %></p></td>
-              <% end %>
-            <% end %>
-          </td>
-        </table>
+          <% end %>
+        </div>
       </div>
       <div class='col-md-8'>
         <table class='table'>
@@ -57,8 +55,8 @@
     </div>
     <div class='row'>
       <div class='md-12'>
-        <th>紹介文</th>
-        <td><%= @member.self_introduction %></td>
+        <div>紹介文</div>
+        <p><%= @member.self_introduction %></p>
       </div>
     </div>
     <div class='row'>

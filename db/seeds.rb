@@ -8,7 +8,7 @@
 
 admins =
   [
-    {email: 'ADMIN_EMAIL', password: 'ADMIN_PASSWORD'},
+    {email: ENV['ADMIN_EMAIL'], password: ENV['ADMIN_PASSWORD']},
   ]
 
 admins.each do |admin|
@@ -138,8 +138,8 @@ isbns =
     {email: 'user2@example.com', isbn: '9784798160689'},
     {email: 'user3@example.com', isbn: '9784798168494'},
     {email: 'user3@example.com', isbn: '9784774195025'},
-    {email: 'user3@example.com', isbn: '9784295012863'},
-    {email: 'user3@example.com', isbn: '9784297114688'},
+    {email: 'user3@example.com', isbn: '9784800711304'},
+    {email: 'user3@example.com', isbn: '9784569852690'},
     {email: 'user3@example.com', isbn: '9784865940657'},
     {email: 'user3@example.com', isbn: '9784798060996'},
     {email: 'user3@example.com', isbn: '9784295007678'},
