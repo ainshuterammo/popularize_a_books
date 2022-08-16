@@ -8,9 +8,12 @@ class Book < ApplicationRecord
 
   # validates :title,presence:true
   # validates :body,presence:true,length:{maximum:200}
-  
+
 
   enum status: { public: 0, private: 1 }, _suffix: true
+
+  validates :catchphrase, length:{maximum:30}
+  validates :body, length:{maximum:200}
 
   def favorited_by?(member)
     favorites.where(member_id: member.id).exists?

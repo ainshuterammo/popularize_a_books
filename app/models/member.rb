@@ -15,7 +15,7 @@ class Member < ApplicationRecord
   end
 
   has_one_attached :profile_image
-  
+
   has_many :books, dependent: :destroy
   has_many :post_comments, dependent: :destroy
   has_many :favorites, dependent: :destroy
@@ -28,6 +28,8 @@ class Member < ApplicationRecord
 
   validates :name, presence: true
   validates :email, presence: true, uniqueness: true
+  validates :nick_name, presence: true
+  validates :self_introduction, presence: true
 
   def follow(member)
     relationships.create(followed_id: member.id)
