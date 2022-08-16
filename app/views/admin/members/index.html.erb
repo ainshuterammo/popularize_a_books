@@ -1,5 +1,36 @@
-<section class="inner">
-	<h2 class="section-ttl">会員一覧</h2>
-	<%= render 'admin/members/index', members: @members %>
-	<%= paginate @members %>
-</section>
+<div class='container pb-5'>
+	<div class='row justify-content-center pt-5'>
+		<h2 class="col-md-auto section-ttl text-center">会員一覧</h2>
+	</div>
+	<div class='row'>
+    <div class="col-md-auto px-5 mx-auto mt-4">
+			<table>
+				<thead>
+					<tr>
+						<th class='text-center'>会員ID</th>
+						<th class='text-center'>名前</th>
+						<th class='text-center'>ステータス</th>
+						<th colspan="3"></th>
+					</tr>
+				</thead>
+				<tbody>
+					<% @members.each do |member| %>
+						<tr>
+							<td class='text-center' ><%= member.id %></td>
+							<td class='text-center'><%= member.name %></td>
+							<td class='text-center'>
+								<% if !member.is_deleted? %>
+									<span class="text-active">有効</span>
+								<% else %>
+									<span class="text-invalid">退会済み</span>
+								<% end %>
+							</td class='text-center'>
+							<td class='text-center'><%= link_to "詳細", admin_member_path(member.id), class: "btn btn-primary" %></td>
+						</tr>
+					<% end %>
+				</tbody>
+			</table>
+			<%= paginate @members, class: 'pb-5' %>
+    </div>
+  </div>
+</div>

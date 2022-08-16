@@ -1,10 +1,16 @@
-<div class='container'>
-  <div class='row'>
-    <div class='col-md-6 offset-md-3'>
-      <h3>本の検索</h3>
+<div class='new_sign container'>
+  <div class='row justify-content-center pt-5'>
+    <h2 class="col-md-auto section-ttl text-center">本の検索</h2>
+  </div>
+  <div class='row justify-content-center'>
+    <div class="col-md-8 px-5 px-sm-0 mx-auto mt-4">
       <%= form_with url: books_selection_path, method: :get, local: true do |f| %>
-        <%= f.text_field :keyword, class: "form-control" %>
-        <%= f.submit '本の題名を検索', class: "form-control btn btn-success" %>
+      <div class="field row mb-3 justify-content-center">
+        <%= f.text_field :keyword, class: "form-control", :placeholder =>"題名（キーワード）", class: 'col-6' %>
+      </div>
+      <div class='row justify-content-center'>
+        <%= f.submit '本の題名を検索', class: "btn btn-success col-md-6 px-5 px-sm-0 mx-auto my-3" %>
+      </div>
       <% end %>
     </div>
   </div>

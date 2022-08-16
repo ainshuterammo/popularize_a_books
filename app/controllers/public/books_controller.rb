@@ -1,4 +1,5 @@
 class Public::BooksController < ApplicationController
+  before_action :member_signed_in, only: [:new, :show, :edit, :create, :update, :destroy, :search, :selection]
   before_action :find_book, only: [:show, :edit, :update, :destroy]
 
   def new
@@ -29,7 +30,6 @@ class Public::BooksController < ApplicationController
   end
 
   def index
-    # @books = Kaminari.paginate_array(Book.where(status: :public).to_a).page(params[:page]).per(10)
     @books = Book.where(status: :public).page(params[:page]).per(10)
   end
 
@@ -70,16 +70,15 @@ class Public::BooksController < ApplicationController
 
   private
 
+  def member_signed_in
+    unless member_signed_in?
+      redirect_to new_member_session_path
+    end
+  end
+
   def find_book
     @book = Book.find(params[:id])
   end
-
-  # def ensure_correct_member
-  #   @book = Book.find(params[:id])
-  #   unless @book.member == current_member
-  #     redirect_to books_path
-  #   end
-  # end
 
   def book_params
     params.require(:book).permit(:member_id, :genre_id, :isbn, :title, :image_url, :author, :publisher_name, :catchphrase, :body, :status)

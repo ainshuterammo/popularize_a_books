@@ -1,36 +1,32 @@
 <div class='container'>
   <div class='row'>
     <div class="col-md-4">
-      <tr>
-        <td>
-          <% if @book.image_url %>
-            <%= image_tag @book.image_url, size:"240x300", class: "image" %>
-          <% else %>
-            <%= image_tag "no_image.jpg", size:"240x300",  class: "image" %>
-          <% end %>
-        </td>
-      </tr>
+      <% if @book.image_url %>
+        <%= image_tag @book.image_url, size:"240x300", class: "image" %>
+      <% else %>
+        <%= image_tag "no_image.jpg", size:"240x300",  class: "image" %>
+      <% end %>
     </div>
     <div class="col-md-8">
       <table class='table'>
         <tr>
-          <th><%=  "タイトル" %></th>
+          <th><h5>タイトル</h5></th>
           <td><%= @book.title %></td>
         </tr>
         <tr>
-          <th><%= "著者" %></th>
+          <th><h5>著者</h5></th>
           <td><%= @book.author %></td>
         </tr>
         <tr>
-          <th><%=  "出版社" %></th>
+          <th><h5>出版社</h5></th>
           <td><%= @book.publisher_name %></td>
         </tr>
         <tr>
-          <th><%=  "ジャンル" %></th>
+          <th><h5>ジャンル</h5></th>
           <td><%= @book.genre.name %></td>
         </tr>
         <tr>
-          <th><%= "オリジナルキャッチコピー" %></th>
+          <th><h5>オリジナルキャッチコピー</h5></th>
           <td><%= @book.catchphrase %></td>
         </tr>
       </table>
@@ -40,18 +36,9 @@
 <div class='container'>
   <div class='row'>
     <div class="md-12">
-        <td><%= "紹介文" %></td>
-        <td><%= @book.body %></td>
-
-      <%# if @book.member == current_member %>
-        <td>
-          <%= form_with model: @book, local: true do |f| %>
-            <%= render "public/books/form", f: f %>
-            <%= f.submit '変更' %>
-          <% end %>
-        </td>
-        <td><%= link_to '削除', admin_book_path(@book), method: :delete, data: { confirm: '本当に消しますか？' }, class: "btn btn-sm btn-danger" %></td>
-      <%# end %>
+      <h5>紹介文</h5>
+      <p><%= @book.body %></p>
+      <div><%= link_to '削除', admin_book_path(@book), method: :delete, data: { confirm: '本当に消しますか？' }, class: "btn btn-sm btn-danger" %></div>
     </div>
   </div>
 </div>
@@ -59,7 +46,7 @@
   <div class='row'>
     <div class="md-12">
       <h4>コメント一覧</h4>
-      <%= render "admin/post_comments/index", book: @book %>
+      <div><%= render "admin/post_comments/index", book: @book %></div>
     </div>
   </div>
 </div>

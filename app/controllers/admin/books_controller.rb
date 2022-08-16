@@ -1,4 +1,5 @@
 class Admin::BooksController < ApplicationController
+   before_action :admin_signed_in, only: [:show, :destroy]
 
 
   def show
@@ -22,6 +23,12 @@ class Admin::BooksController < ApplicationController
   end
 
   private
+
+  def admin_signed_in
+    unless admin_signed_in?
+      redirect_to new_admin_session_path
+    end
+  end
 
   def book_params
     params.require(:book).permit(:member_id, :genre_id, :isbn, :title, :image_url, :author, :publisher_name, :catchphrase, :body, :status)

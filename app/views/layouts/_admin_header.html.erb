@@ -1,47 +1,45 @@
 <header>
-  <nav class="navbar navbar-expand-lg navbar-black bg-black">
-    <div class="container">
-      <%= link_to "Popularize a Books", admin_books_path, class: "navbar-brand" %>
-      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-      <div class="collapse navbar-collapse" id="navbarNav">
-        <ul class="navbar-nav">
-          <% if admin_signed_in? %>
-              <li>
-                <%= link_to admin_members_path,class: 'nav-link text-black' do %>
-                  <i class="fas fa-home"></i> ホーム
-                <% end %>
-              </li>
-              <li>
-                <%=  link_to admin_members_path,class: 'nav-link text-black' do %>
-                  <i class="fas fa-members"></i> 会員一覧
-                <% end %>
-              </li>
-              <li>
-                <%=  link_to admin_books_path ,class: 'nav-link text-black' do %>
-                  <i class="fas fa-book"></i> 投稿一覧
-                <% end %>
-              </li>
-              <li>
-                <%=  link_to admin_genres_path ,class: 'nav-link text-black' do %>
-                  <i class="fas fa-book"></i> ジャンル追加
-                <% end %>
-              </li>
-              <li>
-                <%= link_to destroy_admin_session_path, method: :delete,class: 'nav-link text-black' do %>
-                  <i class="fas fa-sign-out-alt"></i> ログアウト
-                <% end %>
-              </li>
-            <% else %>
-              <li>
-                <%= link_to new_admin_session_path ,class: 'nav-link text-black' do %>
-                  <i class="fas fa-sign-in-alt"></i> ログイン
-                <% end %>
-              </li>
+  <nav class="navbar navbar-expand-lg navbar-light bg-light py-4" style="background-color: #d2b48c;">
+    <%= link_to "Popularize a Books", books_path, class: "navbar-brand" %>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <ul class="navbar-nav ml-auto">
+        <% if admin_signed_in? %>
+          <li>
+            <%= link_to admin_members_path,class: 'nav-link text-black  mr-3 ml-3 ml-3' do %>
+              <i class="fas fa-home"></i> ホーム
             <% end %>
-        </ul>
-      </div>
+          </li>
+          <li>
+            <%=  link_to admin_members_path,class: 'nav-link text-black mr-3 ml-3' do %>
+              <i class="fas fa-users"></i> 会員一覧
+            <% end %>
+          </li>
+          <li>
+            <%=  link_to admin_books_path ,class: 'nav-link text-black mr-3 ml-3' do %>
+              <i class="fas fa-book-open"></i> 投稿一覧
+            <% end %>
+          </li>
+          <li>
+            <%=  link_to admin_genres_path ,class: 'nav-link text-black mr-3 ml-3' do %>
+              <i class="fas fa-dna"></i> ジャンル一覧
+            <% end %>
+          </li>
+          <li>
+            <%= link_to destroy_admin_session_path, method: :delete,class: 'nav-link text-black mr-3 ml-3' do %>
+              <i class="fas fa-sign-out-alt"></i> ログアウト
+            <% end %>
+          </li>
+        <% else %>
+          <li>
+            <%= link_to new_admin_session_path ,class: 'nav-link text-black mr-3 ml-3' do %>
+              <i class="fas fa-sign-in-alt"></i> ログイン
+            <% end %>
+          </li>
+        <% end %>
+      </ul>
     </div>
   </nav>
 </header>

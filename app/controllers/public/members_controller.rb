@@ -46,10 +46,6 @@ class Public::MembersController < ApplicationController
 
   private
 
-  def member_params
-    params.require(:member).permit(:name, :nick_name, :self_introduction, :is_deleted, :profile_image)
-  end
-
   def ensure_guest_member
     @member = Member.find(params[:id])
     if @member.name == "guest"
@@ -62,6 +58,10 @@ class Public::MembersController < ApplicationController
     unless @member == current_member
       redirect_to member_path(current_member.id)
     end
+  end
+
+  def member_params
+    params.require(:member).permit(:name, :nick_name, :self_introduction, :is_deleted, :profile_image)
   end
 
 end

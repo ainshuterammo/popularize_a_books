@@ -14,7 +14,6 @@
  *= require_self
  */
 
-
  main {
   background-color: #f5deb3;
  }
@@ -22,13 +21,36 @@
  header {
   background-color: #d2b48c;
  }
+ 
+ .header-log {
+  font-size: 20px;
+ }
 
  footer {
   background-color: #d2b48c;
  }
 
+ .new_sign {
+  height: 880px;
+ }
+ 
+ .top {
+  background-image: url(log.jpg);
+  background-repeat: no-repeat;
+  background-size: cover;
+  opacity: 0.7;
+ }
+ 
+ .about {
+  background-image: url(about.jpg);
+  background-repeat: no-repeat;
+  background-size: cover;
+  opacity: 0.9;
+  color: #8CFFD1;
+ }
+
  h2 {
-  color: #DE5D71;
+  color: #DB2251;
  }
 
  th {
@@ -38,3 +60,4 @@
  .pagination {
   justify-content: center;
 }
+
