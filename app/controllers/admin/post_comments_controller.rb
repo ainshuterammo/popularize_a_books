@@ -1,9 +1,10 @@
 class Admin::PostCommentsController < ApplicationController
 
   def destroy
+    book = Book.find(params[:book_id])
     @comment = PostComment.find(params[:id])
     @comment.destroy
-    redirect_to admin_book_path(params[:book_id]), alert: 'コメントを削除しました'
+    @post_comments = book.post_comments.page(params[:page]).per(10)
   end
 
   private

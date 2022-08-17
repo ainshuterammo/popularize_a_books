@@ -23,7 +23,7 @@
  }
 
  .header-log {
-  font-size: 20px;
+  font-size: 1.2rem;
  }
 
  footer {
@@ -74,12 +74,8 @@
  }
 
  .book_body {
-  font-size: 1.2rem;
+  font-size: 1.1rem;
  }
-
-/* .pagination {*/
-/*  justify-content: center;*/
-/*}*/
 
 .link {
     text-decoration: none!important;
