@@ -19,6 +19,7 @@
       <%= render 'layouts/member_header' %>
     <% end %>
     <main>
+      <p class=""><%= notice %></p>
       <%= yield %>
     </main>
     <% if request.fullpath.include? "admin" %>

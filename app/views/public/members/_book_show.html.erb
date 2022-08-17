@@ -4,7 +4,7 @@
       <th></th>
       <th>タイトル</th>
       <th>ジャンル</th>
-      <th>オリジナル<by>キャッチコピー</th>
+      <th>キャッチコピー</th>
       <% if member_signed_in? %>
         <th></th>
       <% end %>
@@ -15,9 +15,9 @@
     <tbody class="table">
       <tr>
         <td><%= render "public/books/image_url", book: book %></td>
-        <td><%= link_to book.title, book_path(book.id) %></td>
-        <td><%= book.genre.name %></td>
-        <td><%= book.catchphrase %></td>
+        <td><%= link_to book.title, book_path(book.id), class: "link" %></td>
+        <td class="tb_color"><%= book.genre.name %></td>
+        <td class="tb_color"><%= book.catchphrase %></td>
         <% if member_signed_in? %>
           <td id="favorite_buttons_<%= book.id %>"><%= render "public/favorites/btn", book: book %></td>
         <% end %>

@@ -6,8 +6,8 @@
       <th>メンバーネーム</th>
       <th>ニックネーム</th>
       <th>投稿数</th>
-      <th>フォロー数</th>
-      <th>フォロワー数</th>
+      <th>フォロー</th>
+      <th>フォロワー</th>
       <th></th>
     </tr>
   </thead>
@@ -26,11 +26,11 @@
             <% end %>
           <% end %>
         </td>
-        <td><%= member.name%></td>
-        <td><%= member.nick_name%></td>
-        <td><p><%= member.books.count %>件</p></td>
-        <td><%= link_to member.followings.count, member_followings_path(member) %></td>
-        <td><%= link_to member.followers.count, member_followers_path(member) %></td>
+        <td class="tb_color"><%= member.name %></td>
+        <td class="tb_color"><%= member.nick_name %></td>
+        <td class="tb_color"><p><%= member.books.count %>件</p></td>
+        <td><%= link_to member.followings.count, member_followings_path(member), class: "link" %></td>
+        <td><%= link_to member.followers.count, member_followers_path(member), class: "link" %></td>
         <td>
         <% if member.name != "guestmember" %>
           <% if current_member != member %>

@@ -49,15 +49,33 @@
   color: #8CFFD1;
  }
 
+ .book_body {
+  font-size: 30px;
+ }
+
+ .notice {
+  background-color: #f5deb3;
+ }
+
  h2 {
   color: #DB2251;
  }
 
  th {
+  text-decoration: none;
   color: #DE5D71;
+ }
+ 
+ .tb_color {
+  text-decoration: none;
+  color: #913A00;
  }
 
  .pagination {
   justify-content: center;
 }
 
+.link {
+    text-decoration: none;
+    color: #01703C; 
+}

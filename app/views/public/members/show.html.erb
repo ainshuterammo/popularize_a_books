@@ -1,73 +1,77 @@
-<div class='container'>
-  <%= form_with model:@member, local:true do |f| %>
-    <div class='row'>
-      <div class='col-md-4'>
-        <div class='table'>
+<div class='container pb-5'>
+	<div class='row justify-content-center pt-3'>
+		<h2 class="col-md-auto section-ttl text-center"><%= @member.name %>さんのページ</h2>
+	</div>
+	<%= form_with model:@member, local:true do |f| %>
+    <div class='row justify-content-center pt-5'>
+      <div class="col-md-3 mx-0">
+        <div class="px-4">
           <% if @member.profile_image.attached? %>
             <%= image_tag @member.profile_image, size:"200x200" %>
           <% else %>
             <%= image_tag "no_image.jpg", size:"200x200",  class: "img" %>
           <% end %>
         </div>
-        <div>
+        <div class="text-center my-2">
           <% if @member.name != "guestmember" %>
             <% if current_member == @member %>
-              <td><p><%=link_to"お気に入り記事",favorites_member_path(@member) %></p></td>
+              <%=link_to"お気に入り記事",favorites_member_path(@member), class: "link" %>
+            <% end %>
+          <% end %>
+        </div>
+        <div class="text-center my-1">
+          <% if @member.name != "guestmember" %>
+            <% if current_member != @member %>
+              <td><%= render "public/relationships/btn", member: @member %></td>
+            <% else %>
+              <%= link_to "マイページ編集", edit_member_path(@member), class: "btn btn-outline-success" %>
             <% end %>
           <% end %>
         </div>
       </div>
-      <div class='col-md-8'>
-        <table class='table'>
+      <div class="col-md-7 px-0 mx-0">
+        <table class='table border-danger'>
           <tr>
-            <th>名前</th>
+            <th class="text-nowrap">名前</th>
             <td><%= @member.name %></td>
           </tr>
           <tr>
-            <th>ニックネーム</th>
+            <th class="text-nowrap">ニックネーム</th>
             <td><%= @member.nick_name %></td>
           </tr>
           <tr>
-            <th>投稿数</th>
+            <th class="text-nowrap">投稿数</th>
             <td><p><%= @member.books.count %>件</p></td>
           </tr>
           <tr>
-            <th>フォロー</th>
-            <td><%= link_to @member.followings.count, member_followings_path(@member) %></td>
+            <th class="text-nowrap">フォロー</th>
+            <td><%= link_to @member.followings.count, member_followings_path(@member), class: "link" %></td>
           </tr>
           <tr>
-            <th>フォロワー</th>
-            <td><%= link_to @member.followers.count, member_followers_path(@member) %></td>
+            <th class="text-nowrap">フォロワー</th>
+            <td><%= link_to @member.followers.count, member_followers_path(@member), class: "link" %></td>
           </tr>
-          <td>
-            <% if @member.name != "guestmember" %>
-              <% if current_member != @member %>
-                <td><%= render "public/relationships/btn", member: @member %></td>
-              <% else %>
-                <%= link_to edit_member_path(@member), class: "btn btn-outline-secondary btn-block " do %>
-                  <i>マイページ編集</i>
-                <% end %>
-              <% end %>
-            <% end %>
-          </td>
         </table>
       </div>
     </div>
-    <div class='row'>
-      <div class='md-12'>
-        <div>紹介文</div>
-        <p><%= @member.self_introduction %></p>
-      </div>
-    </div>
-    <div class='row'>
-      <div class='md-12'>
-        <th>投稿一覧</th>
-        <td><%= render "public/members/book_show", books: @books %></td>
-        <%= paginate @books %>
+    <div class='row justify-content-center'>
+      <div class="col-md-9 text-center">
+        <h4 class="text-center">紹介文</h4>
+        <div class="text-wrap">
+          <p><%= @member.self_introduction %></p>
+        </div>
       </div>
     </div>
   <% end %>
 </div>
-
-
-
+<div class='container pb-5'>
+  <div class='row justify-content-center pt-3'>
+  	<div class="col-md-auto section-ttl text-center">
+      <h4>投稿一覧</h4>
+      <div class='justify-content-center'>
+        <%= render "public/members/book_show", books: @books %>
+      </div>
+      <%= paginate @books %>
+    </div>
+  </div>
+</div>

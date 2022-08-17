@@ -1,52 +1,68 @@
-<div class='container'>
-  <div class='row'>
-    <div class="col-md-4">
+<div class='container pb-5'>
+	<div class='row justify-content-center pt-3'>
+		<h2 class="col-md-auto section-ttl text-center">投稿詳細</h2>
+	</div>
+	<div class='row pt-5'>
+    <div class="col-md-3 px-4 mx-0">
       <% if @book.image_url %>
         <%= image_tag @book.image_url, size:"240x300", class: "image" %>
       <% else %>
         <%= image_tag "no_image.jpg", size:"240x300",  class: "image" %>
       <% end %>
     </div>
-    <div class="col-md-8">
-      <table class='table'>
+    <div class="col-md-9 px-0 mx-0 h5">
+      <table class='table border-danger'>
         <tr>
-          <th><h5>タイトル</h5></th>
+          <th class="text-nowrap">タイトル</th>
           <td><%= @book.title %></td>
         </tr>
         <tr>
-          <th><h5>著者</h5></th>
+          <th class="text-nowrap">著者</th>
           <td><%= @book.author %></td>
         </tr>
         <tr>
-          <th><h5>出版社</h5></th>
+          <th class="text-nowrap">出版社</th>
           <td><%= @book.publisher_name %></td>
         </tr>
         <tr>
-          <th><h5>ジャンル</h5></th>
+          <th class="text-nowrap">ジャンル</th>
           <td><%= @book.genre.name %></td>
         </tr>
         <tr>
-          <th><h5>オリジナルキャッチコピー</h5></th>
+          <th class="text-nowrap">キャッチコピー</th>
           <td><%= @book.catchphrase %></td>
         </tr>
       </table>
     </div>
   </div>
-</div>
-<div class='container'>
-  <div class='row'>
-    <div class="md-12">
-      <h5>紹介文</h5>
-      <p><%= @book.body %></p>
-      <div><%= link_to '削除', admin_book_path(@book), method: :delete, data: { confirm: '本当に消しますか？' }, class: "btn btn-sm btn-danger" %></div>
+  <div class='row justify-content-center'>
+    <div class="col-md-3 px-4 mx-0">
+      <th>ステータス:</th>
+        <% if @book.public_status? %>
+  			  <span class="text-public">公開</span>
+  		  <% else %>
+  			  <span class="text-private">非公開</span>
+  		  <% end %>
+  	  </div>
+    </div>
+    <div class='justify-content-center'>
+      <td><%= link_to '削除', @book, method: :delete, data: { confirm: '本当に消しますか？' }, class: "btn btn-sm btn-danger mx-2 my-2" %></td>
+    </div>
+    <div class="col-md-9 text-center">
+      <h3 class="text-center">紹介文</h3>
+      <div class="text-wrap">
+        <p class="book_body"><%= @book.body %></p>
+      </div>
     </div>
   </div>
 </div>
-<div class='container'>
-  <div class='row'>
-    <div class="md-12">
+<div class='container pb-5'>
+  <div class='row justify-content-center pt-3'>
+  	<div class="col-md-auto section-ttl text-center">
       <h4>コメント一覧</h4>
-      <div><%= render "admin/post_comments/index", book: @book %></div>
+      <div class='justify-content-center'>
+        <%= render "public/post_comments/index", book: @book %>
+      </div>
     </div>
   </div>
 </div>

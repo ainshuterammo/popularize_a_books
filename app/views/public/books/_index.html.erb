@@ -1,11 +1,11 @@
-<table class='table table-hover table-inverse'>
+<table class='table table-hover table-inverse mt-3'>
   <thead>
     <tr>
       <th>ニックネーム</th>
       <th></th>
       <th>タイトル</th>
       <th>ジャンル</th>
-      <th>オリジナル<by>キャッチコピー</th>
+      <th>キャッチコピー</th>
       <% if member_signed_in? %>
         <th></th>
         <th></th>
@@ -17,14 +17,14 @@
     <tbody class="table">
       <tr>
         <td>
-          <%= link_to member_path(book.member_id) do %>
+          <%= link_to member_path(book.member_id), class: "link" do %>
             <%= book.member.nick_name %>
           <% end %>
         </td>
         <td><%= render "public/books/image_url", book: book %></td>
-        <td><%= link_to book.title.truncate(20, separator: '...'), book_path(book.id) %></td>
-        <td><%= book.genre.name.truncate(10, separator: '...') %></td>
-        <td><%= book.catchphrase %></td>
+        <td><%= link_to book.title.truncate(20, separator: '...'), book_path(book.id), class: "link" %></td>
+        <td class="tb_color"><%= book.genre.name.truncate(10, separator: '...') %></td>
+        <td class="tb_color"><%= book.catchphrase %></td>
         <% if member_signed_in? %>
           <td id="favorite_buttons_<%= book.id %>"><%= render "public/favorites/btn", book: book %></td>
         <% end %>

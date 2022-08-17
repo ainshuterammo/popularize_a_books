@@ -6,7 +6,7 @@
         <td><%= post_comment.comment %></td>
         <td>
           <% if current_admin %>
-            <%= link_to "Destroy", admin_book_post_comment_path(book, post_comment), method: :delete, class: "btn btn-danger pull-right", remote: true %>
+            <%= link_to "削除", admin_book_post_comment_path(book, post_comment), method: :delete, class: "btn btn-danger pull-right", remote: true %>
           <% end %>
         </td>
       </tr>
