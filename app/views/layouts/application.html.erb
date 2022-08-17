@@ -19,7 +19,9 @@
       <%= render 'layouts/member_header' %>
     <% end %>
     <main>
-      <p class=""><%= notice %></p>
+      <% unless notice.nil? %>
+        <p class="alert text-center"><%= notice %></p>
+      <% end %>
       <%= yield %>
     </main>
     <% if request.fullpath.include? "admin" %>

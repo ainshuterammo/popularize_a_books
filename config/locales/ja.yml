@@ -15,7 +15,7 @@ ja:
       image_url: "表紙"
       author: "著者"
       publisher_name: "出版社"
-      catchphrase: "オリジナルキャッチコピー"
+      catchphrase: "キャッチコピー"
       body: "紹介文"
       status:
         public: "公開"
@@ -37,7 +37,7 @@ ja:
       not_found_in_database: "メールアドレスまたはパスワードが正しくありません。"
       unauthenticated: "続けるにはログインが必要です。"
     registrations:
-      signed_up: "会員登録が完了しました。ようこそNaganoCakeへ！"
+      signed_up: "会員登録が完了しました。ようこそ！"
       updated: "パスワードの更新が完了しました。"
     sessions:
       signed_in: "ログインが完了しました。"
@@ -47,5 +47,5 @@ ja:
     messages:
       already_confirmed: "メールアドレスは既に登録されています。"
       not_saved:
-        one: "エラーが発生しました。以下ご確認お願いいたします。"
-        other: "エラーが発生しました。以下ご確認お願いいたします。"
+        one: "エラーが発生しました。"
+        other: "エラーが発生しました。"

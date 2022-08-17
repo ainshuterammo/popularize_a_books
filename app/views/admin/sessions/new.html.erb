@@ -5,7 +5,9 @@
   <div class='row justify-content-center'>
     <div class="col-md-6 px-5 px-sm-0 mx-auto mt-4">
       <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
-        <%= flash[:alert] %>
+        <div class="text-center">
+          <%= flash[:alert] %>
+        </div>
         <div class="field row mb-3 justify-content-center">
           <%= f.email_field :email, autofocus: true, autocomplete: "email", :placeholder =>"メールアドレス", class: 'col-6' %>
         </div>

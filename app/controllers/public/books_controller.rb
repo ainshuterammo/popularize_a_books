@@ -22,6 +22,7 @@ class Public::BooksController < ApplicationController
 
   def show
     @post_comment = PostComment.new
+    @post_comments = @book.post_comments.page(params[:page]).per(10)
     if @book.private_status? && @book.member != current_member
       respond_to do |format|
         format.html { redirect_to books_path, notice: 'このページにはアクセスできません' }
@@ -39,10 +40,10 @@ class Public::BooksController < ApplicationController
   def create
     @book = current_member.books.build(book_params)
     if @book.save
-      redirect_to book_path(@book), notice: "投稿に成功しました"
+      redirect_to book_path(@book), notice: "投稿成功しました"
     else
       @books = Book.all
-      render 'index'
+      render 'index', notice: "投稿失敗しました"
     end
   end
 
@@ -50,7 +51,7 @@ class Public::BooksController < ApplicationController
     if @book.update(book_params)
       redirect_to book_path(@book), notice: "編集成功しました"
     else
-      render "edit"
+      render "edit", notice: "編集失敗しました"
     end
   end
 
@@ -63,8 +64,10 @@ class Public::BooksController < ApplicationController
   end
 
   def selection
-    if params[:keyword]
+    unless params[:keyword].blank?
       @books = Kaminari.paginate_array(RakutenWebService::Books::Book.search(title: params[:keyword]).to_a).page(params[:page]).per(10)
+    else
+      redirect_to books_search_path, notice: "検索失敗しました（空白または登録が有りません）"
     end
   end
 

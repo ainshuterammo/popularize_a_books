@@ -1,15 +1,18 @@
-<table>
-  <tbody>
-      <% book.post_comments.each do |post_comment| %>
-      <tr>
-        <td><%= post_comment.member.nick_name %></td>
-        <td><%= post_comment.comment %></td>
-        <td>
-          <% if post_comment.member == current_member %>
-            <%= link_to "削除", book_post_comment_path(book, post_comment), method: :delete, class: "btn btn-danger pull-right ", remote: true %>
-          <% end %>
-        </td>
-      </tr>
-      <% end %>
-  </tbody>
-</table>
+
+
+<% post_comments.each do |post_comment| %>
+  <div class="row comment-body">
+    <div class="col-md-3">
+      <%= post_comment.member.nick_name %>
+      <div class="mt-3">
+        <% if post_comment.member == current_member %>
+          <%= link_to "削除", book_post_comment_path(post_comment.book_id, post_comment), method: :delete, class: "btn btn-sm btn-danger pull-right ", remote: true %>
+        <% end %>
+      </div>
+    </div>
+    <div class="col-md-9">
+      <%= simple_format(post_comment.comment) %>
+    </div>
+  </div>
+  <hr>
+<% end %>

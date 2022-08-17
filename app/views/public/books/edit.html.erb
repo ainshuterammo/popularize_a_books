@@ -1,18 +1,20 @@
 <div class='container pb-5'>
   <div class='row justify-content-center pt-3'>
     <h2 class="col-md-auto section-ttl text-center">編集画面</h2>
-    <div class="col-sm-12 col-md-8 col-lg-5 px-5 px-sm-0 mx-auto">
-      <%= form_with model: @book,local:true do |f| %>
-        <table class='table'>
-          <tr>
-            <th><p>
-              <% if @book.image_url %>
-                <%= image_tag @book.image_url, size:"240x300", class: "image" %>
-              <% else %>
-                <%= image_tag "no_image.jpg", size:"240x300",  class: "image" %>
-              <% end %>
-            </p></th>
-          </tr>
+  </div>
+  <%= form_with model: @book,local:true do |f| %>
+    <div class='row justify-content-center pt-3'>
+      <div class="col-sm-3 col-md-8 col-lg-5 px-5 px-sm-0 mx-auto">
+        <%= render partial: 'layouts/error_messages', locals: {resource: @book} %>
+        <% if @book.image_url %>
+          <%= image_tag @book.image_url, size:"240x300", class: "image img-fluid d-block mx-auto" %>
+        <% else %>
+          <%= image_tag "no_image.jpg", size:"240x300",  class: "image img-fluid d-block mx-auto" %>
+        <% end %>
+        </div>
+      </div>
+        <div class="col-md-10 col-lg-7 px-5 px-sm-0 mx-auto">
+          <table class="table">
           <tr>
             <th><%= f.label "タイトル" %></th>
             <td><%= @book.title %></td>
@@ -37,11 +39,14 @@
             <th><%= f.label "紹介文" %></th>
             <td><%= f.text_area :body, class: 'form-control book_body' %></td>
           </tr>
-        </table>
-        <%= link_to '戻る', book_path(@book.id), class: "back" %>
-        <%= f.submit '保存' %>
-    <% end %>
+          </table>
+          <div class="text-center">
+            <%= link_to '戻る', book_path(@book.id), class: "btn btn-secondary mx-4" %>
+            <%= f.submit '保存', class: "btn btn-success mx-4" %>
+          </div>
+        </div>
 
-    </div>
+    <% end %>
+  </div>
   </div>
 </div>

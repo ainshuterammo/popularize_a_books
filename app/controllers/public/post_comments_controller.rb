@@ -5,13 +5,16 @@ class Public::PostCommentsController < ApplicationController
     @comment = current_member.post_comments.new(post_comment_params)
     @comment.book_id = book.id
     @comment.save
-    redirect_to book_path(book), notice: 'コメントを投稿しました'
+    @post_comments = book.post_comments.page(params[:page]).per(10)
+    # redirect_to book_path(book), notice: 'コメントを投稿しました'
   end
 
   def destroy
+    book = Book.find(params[:book_id])
     @comment = PostComment.find(params[:id])
     @comment.destroy
-    redirect_to book_path(params[:book_id]), alert: 'コメントを削除しました'
+    @post_comments = book.post_comments.page(params[:page]).per(10)
+    # redirect_to book_path(params[:book_id]), alert: 'コメントを削除しました'
   end
 
   private

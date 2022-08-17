@@ -1,31 +1,35 @@
-<section class="inner">
-<h2 class="section-ttl"><%= @member.name %> さんの会員情報編集</h2>
-<%= form_with model:@member, url: admin_member_path(@member), method: :patch do |f| %>
-<%= render 'layouts/error_messages', resource: @member %>
-<table class="member_info member_form">
-<thead>
-<th></th>
-<th></th>
-<th></th>
-</thead>
-<tbody>
-<tr>
-<td>名前</td>
-<td><%= @member.name %></td>
-</tr>
-<tr>
-<td>メールアドレス</td>
-<td colspan="2"><%= @member.email %></td>
-</tr>
-<tr>
-<td>会員ステータス</td>
-<td><%= f.radio_button :is_deleted, false %><%= f.label :is_deleted, "有効", class: "text-invalide" %></td>
-<td><%= f.radio_button :is_deleted, true %><%= f.label :is_deleted, "退会済み", class: "text-invalid" %></td>
-</tr>
-<tr>
-<td colspan="3"><%= f.submit "更新", class: "btn btn-primary" %></td>
-</tr>
-</tbody>
-</table>
-<% end %>
-</section>
+<div class="container">
+  <div class="row">
+    <div class="com-md-6 mx-auto">
+      <h2 class="section-ttl"><%= @member.name %> さんの会員情報編集</h2>
+      <%= form_with model:@member, url: admin_member_path(@member), method: :patch do |f| %>
+      <%= render 'layouts/error_messages', resource: @member %>
+      <table class="member_info member_form">
+      <thead>
+      <th></th>
+      <th></th>
+      <th></th>
+      </thead>
+      <tbody>
+      <tr>
+      <td>名前</td>
+      <td><%= @member.name %></td>
+      </tr>
+      <tr>
+      <td>メールアドレス</td>
+      <td colspan="2"><%= @member.email %></td>
+      </tr>
+      <tr>
+      <td>会員ステータス</td>
+      <td><%= f.radio_button :is_deleted, false %><%= f.label :is_deleted, "有効", class: "text-invalide" %></td>
+      <td><%= f.radio_button :is_deleted, true %><%= f.label :is_deleted, "退会済み", class: "text-invalid" %></td>
+      </tr>
+      <tr>
+      <td colspan="3"><%= f.submit "更新", class: "btn btn-primary" %></td>
+      </tr>
+      </tbody>
+      </table>
+      <% end %>
+    </div>
+  </div>
+</div>

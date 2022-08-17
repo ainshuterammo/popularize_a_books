@@ -1,13 +1,10 @@
-<div class='container'>
+<div class='container pt-4'>
   <%= form_with model: @book do |f| %>
     <div class='row'>
       <div class="col-md-4">
-        <tr>
-          <th><p><%= image_tag @book.image_url, size:"280x340", class: "image" %></p></th>
-          <td><%= f.hidden_field :image_url, :value => @book.image_url %></td>
-        </tr>
+        <%= image_tag @book.image_url, size:"280x340", class: "image img-fluid d-block mx-auto" %>
+        <%= f.hidden_field :image_url, :value => @book.image_url %>
       </div>
-
       <div class="col-md-8">
         <table class='table'>
           <tr>
@@ -40,12 +37,13 @@
           </tr>
         </table>
       </div>
-        <tr>
-          <th><%= f.label "紹介文" %></th>
-          <td><%= f.text_area :body, class: 'form-control book_body' %></td>
-        </tr>
-      <%= f.submit  class: 'btn btn-success' %>
+    </div>
+    <div>
+       <%= f.label "紹介文" %><%= f.text_area :body, class: 'form-control book_body' %>
+    </div>
+    <div class="text-center">
+      <%= f.submit  class: 'btn btn-success my-3' %>
       <%= f.hidden_field :isbn, :value => @book.isbn %>
-     </div>
+    </div>
   <% end %>
 </div>

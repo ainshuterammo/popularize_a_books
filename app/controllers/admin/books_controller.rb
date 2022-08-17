@@ -5,11 +5,7 @@ class Admin::BooksController < ApplicationController
   def show
     @book = Book.find(params[:id])
     @post_comment = PostComment.new
-    if @book.private_status? && @book.member != current_member
-      respond_to do |format|
-        format.html { redirect_to books_path, notice: 'このページにはアクセスできません' }
-      end
-    end
+    @post_comments = PostComment.all.page(params[:page]).per(10)
   end
 
   def index

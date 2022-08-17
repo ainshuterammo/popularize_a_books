@@ -1,36 +1,34 @@
 <div class='container'>
-  <div class='row'>
-    <div class="col-sm-12 col-md-8 col-lg-5 px-5 px-sm-0 mx-auto">
-    <h2>マイページ編集</h2>
-    <%= form_with model:@member, local:true do |f| %>
-      <%= render 'layouts/error_messages', obj: @member %>
-      <div class="form-group">
-        <%= f.label "名前" %>
-        <%= f.text_field :name, class: "form-control name" %>
-      </div>
-      <div class="form-group">
-        <%= f.label "ニックネーム" %>
-        <%= f.text_field :nick_name, class: "form-control name" %>
-      </div>
-     <div class="form-group">
-        <%= f.label "プロフィール画像" %>
-        <%= f.file_field :profile_image, class: "form-control-file member_image", accept: 'image/*' %>
-      </div>
-      <div class="form-group">
-        <%= f.label "自己紹介" %>
-        <%= f.text_area :self_introduction, class: "form-control self_introduction" %>
-      </div>
-      <div class="form-group">
-        <%= f.submit "編集内容を保存", class: 'btn btn-success' %>
-      </div>
-
-      <div class="container mt-4 mb-4">
-        <div class="row">
-          <div class="col-md-3">
-          <%= link_to "退会する", confirm_unsubscribe_path, class: 'btn btn-danger' %>
-          </div>
+	<div class='row justify-content-center pt-3'>
+		<h2 class="col-md-auto section-ttl text-center">マイページ編集</h2>
+	</div>
+	<div class='row justify-content-center pt-3'>
+	  <div class="col-md-12 col-lg-6 py-2 px-sm-0 mx-auto">
+	    <%= render partial: 'layouts/error_messages', locals: {resource: @member} %>
+      <%= form_with model:@member, local:true do |f| %>
+        <div class="form-group">
+          <%= f.label "名前" %>
+          <%= f.text_field :name, class: "form-control name" %>
         </div>
-      </div>
-    <% end %>
+        <div class="form-group">
+          <%= f.label "ニックネーム" %>
+          <%= f.text_field :nick_name, class: "form-control name" %>
+        </div>
+       <div class="form-group">
+          <%= f.label "プロフィール画像" %>
+          <%= f.file_field :profile_image, class: "form-control-file member_image", accept: 'image/*' %>
+        </div>
+        <div class="form-group">
+          <%= f.label "自己紹介" %>
+          <%= f.text_area :self_introduction, class: "form-control self_introduction" %>
+        </div>
+        <div class="form-group text-center">
+          <%= f.submit "編集内容を保存", class: 'btn btn-success' %>
+        </div>
+        <div class="form-group text-center mt-5">
+          <%= link_to "退会する", confirm_unsubscribe_path, class: 'btn btn-sm btn-danger' %>
+        </div>
+      <% end %>
+    </div>
   </div>
 </div>

@@ -57,7 +57,9 @@
   background-color: #f5deb3;
  }
 
- h2 {
+ h1, h2,
+ h3, h4,
+ h5, h6 {
   color: #DB2251;
  }
 
@@ -65,17 +67,31 @@
   text-decoration: none;
   color: #DE5D71;
  }
- 
- .tb_color {
+
+ .tb_color, .book_body, .comment-body {
   text-decoration: none;
   color: #913A00;
  }
 
- .pagination {
-  justify-content: center;
-}
+ .book_body {
+  font-size: 1.2rem;
+ }
+
+/* .pagination {*/
+/*  justify-content: center;*/
+/*}*/
 
 .link {
-    text-decoration: none;
-    color: #01703C; 
+    text-decoration: none!important;
+    color: #01703C!important;
 }
+
+ .page-item.active .page-link{
+  background-color: #d2b48c!important;
+  border-color: #f0f0f0!important;
+ }
+ .page-link,
+ .page-item.active .page-link {
+  text-decoration: none!important;
+  color: #000!important;
+ }

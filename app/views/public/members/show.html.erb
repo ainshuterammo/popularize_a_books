@@ -7,9 +7,9 @@
       <div class="col-md-3 mx-0">
         <div class="px-4">
           <% if @member.profile_image.attached? %>
-            <%= image_tag @member.profile_image, size:"200x200" %>
+            <%= image_tag @member.profile_image, size:"200x200", class: 'img-fluid' %>
           <% else %>
-            <%= image_tag "no_image.jpg", size:"200x200",  class: "img" %>
+            <%= image_tag "no_image.jpg", size:"200x200",  class: "img img-fluid" %>
           <% end %>
         </div>
         <div class="text-center my-2">
@@ -32,23 +32,23 @@
       <div class="col-md-7 px-0 mx-0">
         <table class='table border-danger'>
           <tr>
-            <th class="text-nowrap">名前</th>
+            <th class="text-nowrap" width="40%">名前</th>
             <td><%= @member.name %></td>
           </tr>
           <tr>
-            <th class="text-nowrap">ニックネーム</th>
+            <th class="text-nowrap" width="40%">ニックネーム</th>
             <td><%= @member.nick_name %></td>
           </tr>
           <tr>
-            <th class="text-nowrap">投稿数</th>
+            <th class="text-nowrap" width="40%">投稿数</th>
             <td><p><%= @member.books.count %>件</p></td>
           </tr>
           <tr>
-            <th class="text-nowrap">フォロー</th>
+            <th class="text-nowrap" width="40%">フォロー</th>
             <td><%= link_to @member.followings.count, member_followings_path(@member), class: "link" %></td>
           </tr>
           <tr>
-            <th class="text-nowrap">フォロワー</th>
+            <th class="text-nowrap" width="40%">フォロワー</th>
             <td><%= link_to @member.followers.count, member_followers_path(@member), class: "link" %></td>
           </tr>
         </table>
@@ -57,8 +57,8 @@
     <div class='row justify-content-center'>
       <div class="col-md-9 text-center">
         <h4 class="text-center">紹介文</h4>
-        <div class="text-wrap">
-          <p><%= @member.self_introduction %></p>
+        <div class="text-break">
+          <p><%= simple_format(@member.self_introduction) %></p>
         </div>
       </div>
     </div>

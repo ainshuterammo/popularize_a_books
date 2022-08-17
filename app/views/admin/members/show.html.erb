@@ -1,14 +1,29 @@
 <div class='container pb-5'>
-  <div class='row justify-content-center pt-3'>
-    <h2 class="col-md-auto section-ttl text-center"><%= @member.name %>さんのページ</h2>
-    <table class="member_info">
-      <thead>
-        <th></th>
-        <th></th>
-        <th></th>
-        </thead>
-          <tbody>
-            <tr>
+	<div class='row justify-content-center pt-3'>
+		<h2 class="col-md-auto section-ttl text-center"><%= @member.name %>さんのページ</h2>
+	</div>
+	<%= form_with model:@member, local:true do |f| %>
+    <div class='row justify-content-center pt-5'>
+      <div class="col-md-3 mx-0">
+        <div class="px-4">
+          <% if @member.profile_image.attached? %>
+            <%= image_tag @member.profile_image, size:"200x200" %>
+          <% else %>
+            <%= image_tag "no_image.jpg", size:"200x200",  class: "img" %>
+          <% end %>
+        </div>
+      </div>
+      <div class="col-md-7 px-0 mx-0">
+        <table class='table border-danger'>
+          <tr>
+            <th class="text-nowrap">名前</th>
+            <td><%= @member.name %></td>
+          </tr>
+          <tr>
+            <th class="text-nowrap">ニックネーム</th>
+            <td><%= @member.nick_name %></td>
+          </tr>
+          <tr>
               <td>会員ID</td>
               <td colspan="2"><%= @member.id %></td>
             </tr>
@@ -20,21 +35,41 @@
               <td>メールアドレス</td>
               <td colspan="2"><%= @member.email %></td>
             </tr>
-              <tr>
-            <td>会員ステータス</td>
-            <td colspan="2">
-            <% unless @member.is_deleted? %>
-            <span class="text-active">有効</span>
-            <% else %>
-            <span class="text-invalid">退会済み</span>
-            <% end %>
-            </td>
+            <tr>
+              <td>会員ステータス</td>
+              <td colspan="2">
+                <% unless @member.is_deleted? %>
+                  <span class="text-active">有効</span>
+                <% else %>
+                  <span class="text-invalid">退会済み</span>
+                <% end %>
+              </td>
             </tr>
             <tr>
-            <td><%= link_to "編集", edit_admin_member_path(@member), class: "btn btn-success" %></td>
-            <td><%= link_to "投稿一覧を見る", admin_books_path(@member), class: "btn btn-primary" %></td>
+              <td><%= link_to "編集", edit_admin_member_path(@member), class: "btn btn-success" %></td>
+              <td><%= link_to "投稿一覧を見る", admin_books_path(@member), class: "btn btn-primary" %></td>
             </tr>
-          </tbody>
-      </table>
-
-</section>
+        </table>
+      </div>
+    </div>
+    <div class='row justify-content-center'>
+      <div class="col-md-9 text-center">
+        <h4 class="text-center">紹介文</h4>
+        <div class="text-wrap">
+          <p><%= @member.self_introduction %></p>
+        </div>
+      </div>
+    </div>
+  <% end %>
+</div>
+<div class='container pb-5'>
+  <div class='row justify-content-center pt-3'>
+  	<div class="col-md-auto section-ttl text-center">
+      <h4>投稿一覧</h4>
+      <div class='justify-content-center'>
+        <%= render "admin/books/index", books: @books %>
+      </div>
+      <%= paginate @books %>
+    </div>
+  </div>
+</div>

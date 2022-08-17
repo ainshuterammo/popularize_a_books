@@ -61,8 +61,9 @@
   	<div class="col-md-auto section-ttl text-center">
       <h4>コメント一覧</h4>
       <div class='justify-content-center'>
-        <%= render "public/post_comments/index", book: @book %>
+        <%= render "public/post_comments/index", post_comments: @post_comments %>
       </div>
+      <%= paginate @post_comments %>
     </div>
   </div>
 </div>

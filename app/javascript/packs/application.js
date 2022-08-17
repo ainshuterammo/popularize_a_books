@@ -17,3 +17,10 @@ import "../stylesheets/application"
 Rails.start()
 Turbolinks.start()
 ActiveStorage.start()
+
+/*global $*/
+$(document).on('turbolinks:load', function() {
+  $(function(){
+    $(".alert").fadeOut(2500);
+  });
+});

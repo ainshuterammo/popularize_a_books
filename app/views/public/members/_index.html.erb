@@ -1,5 +1,4 @@
-<table class='table table-hover table-inverse'>
-
+<table class='table table-hover table-inverse p-0 m-0'>
   <thead>
     <tr>
       <th></th>
@@ -11,9 +10,8 @@
       <th></th>
     </tr>
   </thead>
-
+  <tbody>
   <% members.each do |member| %>
-   <tbody class="table">
       <tr>
         <td>
           <% if member.profile_image.attached? %>
@@ -41,6 +39,6 @@
         <% end %>
         </td>
       </tr>
-    </tbody>
   <% end %>
+  </tbody>
 </table>

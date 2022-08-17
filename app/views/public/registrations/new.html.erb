@@ -5,7 +5,9 @@
   <div class='row justify-content-center'>
     <div class="col-md-6 px-5 px-sm-0 mx-auto mt-4">
       <%= form_with model: @member, url: registration_path(resource_name), local: true do |f| %>
-        <%= render 'layouts/error_messages', resource: @member %>
+        <div class="text-center">
+          <%= render 'layouts/error_messages', resource: @member %>
+        </div>
         <div class="field row mb-3 justify-content-center">
           <%= f.text_field :name, autofocus: true, :placeholder =>"メンバーネーム", class: 'col-6' %></td>
         </div>

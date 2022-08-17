@@ -5,7 +5,7 @@ class Member < ApplicationRecord
          :recoverable, :rememberable, :validatable
 
   def self.guest
-    find_or_create_by!(name: 'guestmember' ,email: 'guest@example.com') do |member|
+    find_or_create_by!(name: 'guest' ,email: 'guest@example.com') do |member|
       member.password = SecureRandom.urlsafe_base64
       member.name = "guest"
       member.nick_name = "guest"
@@ -26,10 +26,10 @@ class Member < ApplicationRecord
   has_many :relationships, class_name: "Relationship", foreign_key: "follower_id", dependent: :destroy
   has_many :followings, through: :relationships, source: :followed
 
-  validates :name, presence: true
+  validates :name, presence: true, length:{maximum:50}
   validates :email, presence: true, uniqueness: true
-  validates :nick_name, presence: true
-  validates :self_introduction, presence: true
+  validates :nick_name, presence: true, length:{maximum:50}
+  validates :self_introduction, presence: true, length:{maximum:250}
 
   def follow(member)
     relationships.create(followed_id: member.id)

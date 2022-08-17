@@ -1,6 +1,6 @@
 class Public::MembersController < ApplicationController
   before_action :authenticate_member!
-  before_action :ensure_guest_member, only: [:edit, :show]
+  before_action :ensure_guest_member, only: [:edit]
   before_action :ensure_correct_member, only: [:edit, :update]
 
   def show
