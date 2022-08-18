@@ -137,9 +137,9 @@ isbns =
     {email: 'user2@example.com', isbn: '9784295008057'},
     {email: 'user2@example.com', isbn: '9784798160689'},
     {email: 'user3@example.com', isbn: '9784798168494'},
-    {email: 'user3@example.com', isbn: '9784774195025'},
-    {email: 'user3@example.com', isbn: '9784800711304'},
-    {email: 'user3@example.com', isbn: '9784569852690'},
+    {email: 'user3@example.com', isbn: '9784877835026'},
+    {email: 'user3@example.com', isbn: '9784569764542'},
+    {email: 'user3@example.com', isbn: '9784569766348'},
     {email: 'user3@example.com', isbn: '9784865940657'},
     {email: 'user3@example.com', isbn: '9784798060996'},
     {email: 'user3@example.com', isbn: '9784295007678'},
@@ -183,4 +183,36 @@ isbns.each do |isbn|
     puts "#{member.name}のために#{rws_book.title}を取得"
   end
 
+end
+
+m = Member.find_by(email: isbns[0][:email])
+book_content = Book.find_by(member_id: m.id, isbn: isbns[0][:isbn])
+book_content.catchphrase = "Rubyが実践で使えるようになる"
+book_content.body = "Rubyの勉強に使用してます。rubyの理解が少しできるときに見たほうが参考にしやすいと思います"
+book_content.save!
+comments =
+  [
+    {member: Member.find_by(email: members[1][:email]), comment: 'よくできたためになる本'},
+    {member: Member.find_by(email: members[2][:email]), comment: '勉強できました'},
+    {member: Member.find_by(email: members[3][:email]), comment: '使える１冊'},
+  ]
+
+comments.each do |c|
+  book_content.post_comments.new(member: c[:member], comment: c[:comment]).save
+end
+
+m = Member.find_by(email: isbns[3][:email])
+book_content = Book.find_by(member_id: m.id, isbn: isbns[3][:isbn])
+book_content.catchphrase = "Ruby初心者のおすすめ"
+book_content.body = "rubyが初めてで不安でしたがわかりやすい内容と説明でしたのでRubyの勉強に使用してます。"
+book_content.save!
+comments =
+  [
+    {member: Member.find_by(email: members[5][:email]), comment: '初心者の自分には難しかったです。'},
+    {member: Member.find_by(email: members[9][:email]), comment: '自分も使用してます。'},
+    {member: Member.find_by(email: members[12][:email]), comment: '自分も買いたいと思います。'},
+  ]
+
+comments.each do |c|
+  book_content.post_comments.new(member: c[:member], comment: c[:comment]).save
 end
