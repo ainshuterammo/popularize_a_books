@@ -6,10 +6,6 @@
       <th class="text-nowrap">タイトル</th>
       <th class="text-nowrap">ジャンル</th>
       <th class="text-nowrap">キャッチコピー</th>
-      <% if member_signed_in? %>
-        <th></th>
-        <th></th>
-      <% end %>
     </tr>
   </thead>
 
@@ -25,9 +21,6 @@
         <td><%= link_to book.title.truncate(20, separator: '...'), admin_book_path(book.id), class: "link" %></td>
         <td class="tb_color"><%= book.genre.name.truncate(10, separator: '...') %></td>
         <td class="tb_color"><%= book.catchphrase %></td>
-        <% if member_signed_in? %>
-          <td id="favorite_buttons_<%= book.id %>"><%= render "public/favorites/btn", book: book %></td>
-        <% end %>
       </tr>
     </tbody>
   <% end %>

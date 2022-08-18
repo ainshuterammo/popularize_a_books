@@ -51,7 +51,7 @@ class Public::SessionsController < Devise::SessionsController
   def guest_sign_in
     member = Member.guest
     sign_in member
-    redirect_to books_path, notice: 'guestでログインしました。'
+    redirect_to member_path(current_member.id), notice: 'guestでログインしました。'
   end
 
   def after_sign_in_path_for(resource)
@@ -59,7 +59,7 @@ class Public::SessionsController < Devise::SessionsController
   end
 
   def after_sign_out_path_for(resource)
-    root_path
+    new_member_session_path
   end
 
   def reject_inactive_member

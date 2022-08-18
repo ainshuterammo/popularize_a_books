@@ -15,7 +15,7 @@
         <div class="text-center my-2">
           <% if @member.name != "guestmember" %>
             <% if current_member == @member %>
-              <%=link_to"お気に入り記事",favorites_member_path(@member), class: "link" %>
+              <%=link_to"お気に入り投稿",favorites_member_path(@member), class: "link" %>
             <% end %>
           <% end %>
         </div>

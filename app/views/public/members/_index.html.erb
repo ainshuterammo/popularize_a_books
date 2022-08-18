@@ -16,11 +16,11 @@
         <td>
           <% if member.profile_image.attached? %>
             <%= link_to member_path(member.id) do %>
-              <%= image_tag member.profile_image, :size => '80x80' %>
+              <%= image_tag member.profile_image, :size => '80x80', class: "img img-fluid" %>
             <% end %>
           <% else %>
             <%= link_to member_path(member.id) do %>
-              <%= image_tag "no_image.jpg", :size => '80x80', class: "img" %>
+              <%= image_tag "no_image.jpg", :size => '80x80', class: "img img-fluid" %>
             <% end %>
           <% end %>
         </td>
