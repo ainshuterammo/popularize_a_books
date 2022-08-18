@@ -4,7 +4,7 @@
 	</div>
 	<div class='row justify-content-center pt-5'>
     <div class="col-md-auto mx-0">
-				<h3 class="text-center">退会すると、会員登録情報やこれまでの投稿一覧が閲覧できなくなります。<br>退会する場合は、「退会する」をクリックしてください。</h3>
+				<h3 class="text-center">退会すると、メンバー登録情報やこれまでの投稿一覧が閲覧できなくなります。<br>退会する場合は、「退会する」をクリックしてください。</h3>
 				<div class="text-center flex justify-around pt-3">
 					<%= link_to "マイページに戻る", member_path(current_member.id), class: "btn btn-primary my-3 mx-5" %>
 					<%= link_to "退会する", withdraw_member_path, method: :patch, "data-confirm" => "OKを押すと退会処理がされます。本当によろしいですか？", class: "btn btn-danger my-3 mx-5" %>

@@ -42,7 +42,7 @@
        <%= f.label "紹介文" %><%= f.text_area :body, class: 'form-control book_body' %>
     </div>
     <div class="text-center">
-      <%= f.submit  class: 'btn btn-success my-3' %>
+      <%= f.submit "投稿する", class: 'btn btn-success my-3' %>
       <%= f.hidden_field :isbn, :value => @book.isbn %>
     </div>
   <% end %>

@@ -21,7 +21,7 @@
       <div class="col-md-7 px-0 mx-0">
         <table class='table border-danger'>
           <tr>
-            <th class="text-nowrap" width="40%">名前</th>
+            <th class="text-nowrap" width="40%">メンバーネーム</th>
             <td class="tb_color"><%= @member.name %></td>
           </tr>
           <tr>
@@ -29,7 +29,7 @@
             <td class="tb_color"><%= @member.nick_name %></td>
           </tr>
           <tr>
-            <th class="text-nowrap" width="40%">会員ID</th>
+            <th class="text-nowrap" width="40%">メンバーID</th>
             <td class="tb_color"><%= @member.id %></td>
           </tr>
           <tr>
@@ -37,7 +37,7 @@
             <td class="tb_color"><%= @member.email %></td>
           </tr>
           <tr>
-            <th class="text-nowrap" width="40%">会員ステータス</th>
+            <th class="text-nowrap" width="40%">メンバーステータス</th>
             <td class="tb_color">
               <% unless @member.is_deleted? %>
                 <span class="text-active">有効</span>

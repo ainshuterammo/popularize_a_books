@@ -7,7 +7,7 @@
 	    <%= render partial: 'layouts/error_messages', locals: {resource: @member} %>
       <%= form_with model:@member, local:true do |f| %>
         <div class="form-group">
-          <%= f.label "名前" %>
+          <%= f.label "メンバーネーム" %>
           <%= f.text_field :name, class: "form-control name" %>
         </div>
         <div class="form-group">
