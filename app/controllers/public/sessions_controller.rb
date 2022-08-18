@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 class Public::SessionsController < Devise::SessionsController
-  # before_action :reject_inactive_member, only: [:create]
+  before_action :reject_inactive_member, only: [:create]
 
   # def reject_inactive_customer
   #   @customer = Customer.find_by(email: params[:customer][:email])
