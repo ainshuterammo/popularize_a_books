@@ -41,8 +41,6 @@
 - JSライブラリ：jQuery
 - IDE：Cloud9
 
-## 使用素材
-- 使用検討中
 
 ## 使用外部API
  - [楽天ブックス書籍検索API](https://webservice.rakuten.co.jp/documentation/books-book-search)
