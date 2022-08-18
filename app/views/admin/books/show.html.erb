@@ -37,11 +37,11 @@
   </div>
   <div class='row pt-1'>
     <div class="col-md-3 text-center">
-      <div>ステータス:
+      <div class="tb_color">ステータス:
         <% if @book.public_status? %>
-  			  <span class="text-public">公開</span>
+  			  <span class="text-public tb_color">公開</span>
   		  <% else %>
-  			  <span class="text-private">非公開</span>
+  			  <span class="text-private tb_color">非公開</span>
   		  <% end %>
   	  </div>
       <div class='justify-content-center'>

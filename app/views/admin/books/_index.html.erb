@@ -21,7 +21,7 @@
             <%= book.member.nick_name %>
           <% end %>
         </td>
-        <td><%= render "public/books/image_url", book: book %></td>
+        <td><%= render "admin/books/image_url", book: book %></td>
         <td><%= link_to book.title.truncate(20, separator: '...'), admin_book_path(book.id), class: "link" %></td>
         <td class="tb_color"><%= book.genre.name.truncate(10, separator: '...') %></td>
         <td class="tb_color"><%= book.catchphrase %></td>

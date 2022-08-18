@@ -16,16 +16,15 @@
 				<tbody>
 					<% @members.each do |member| %>
 						<tr>
-							<td class='text-center' ><%= member.id %></td>
-							<td class='text-center'><%= member.name %></td>
-							<td class='text-center'>
+							<td class='text-center tb_color' ><%= member.id %></td>
+							<td class='text-center tb_color'><%= member.name %></td>
+							<td class='text-center tb_color'>
 								<% if !member.is_deleted? %>
 									<span class="text-active">有効</span>
 								<% else %>
 									<span class="text-invalid">退会済み</span>
 								<% end %>
-							</td class='text-center'>
-							<td class='text-center'><%= link_to "詳細", admin_member_path(member.id), class: "btn btn-primary" %></td>
+							<td class='text-center'><%= link_to "詳細", admin_member_path(member.id), class: "btn btn-info my-2 mx-2" %></td>
 						</tr>
 					<% end %>
 				</tbody>
