@@ -71,7 +71,7 @@
 
  .sign_in, .tb_color, .book_body, .comment-body, .member_introduction {
   text-decoration: none;
-  color: #913A00;
+  color: #913A00!important;
  }
 
  .edit_color {

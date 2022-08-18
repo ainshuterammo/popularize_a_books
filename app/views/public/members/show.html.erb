@@ -33,15 +33,15 @@
         <table class='table border-danger'>
           <tr>
             <th class="text-nowrap" width="40%">メンバーネーム</th>
-            <td><%= @member.name %></td>
+            <td class="tb_color"><%= @member.name %></td>
           </tr>
           <tr>
             <th class="text-nowrap" width="40%">ニックネーム</th>
-            <td><%= @member.nick_name %></td>
+            <td class="tb_color"><%= @member.nick_name %></td>
           </tr>
           <tr>
             <th class="text-nowrap" width="40%">投稿数</th>
-            <td><p><%= @member.books.count %>件</p></td>
+            <td class="tb_color"><p><%= @member.books.count %>件</p></td>
           </tr>
           <tr>
             <th class="text-nowrap" width="40%">フォロー</th>
@@ -57,7 +57,7 @@
     <div class='row justify-content-center'>
       <div class="col-md-9 text-center">
         <h4 class="text-center">紹介文</h4>
-        <div class="text-break">
+        <div class="text-break member_introduction">
           <p><%= simple_format(@member.self_introduction) %></p>
         </div>
       </div>

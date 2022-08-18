@@ -17,23 +17,23 @@
           <table class="table">
           <tr>
             <th><%= f.label "タイトル" %></th>
-            <td><%= @book.title %></td>
+            <td class="tb_color"><%= @book.title %></td>
           </tr>
           <tr>
             <th><%= f.label "著者" %></th>
-            <td><%= @book.author %></td>
+            <td class="tb_color"><%= @book.author %></td>
           </tr>
           <tr>
             <th><%= f.label "出版社"%></th>
-            <td><%= @book.publisher_name %></td>
+            <td class="tb_color"><%= @book.publisher_name %></td>
           </tr>
           <tr>
             <th><%= f.label "ジャンル" %></th>
-            <td><%= @book.genre.name %></td>
+            <td class="tb_color"><%= @book.genre.name %></td>
           </tr>
           <tr>
             <th><%= f.label "キャッチコピー" %></th>
-            <td><%= f.text_field :catchphrase, class: 'form-control book_catchphrase' %></td>
+            <td class="tb_color"><%= f.text_field :catchphrase, class: 'form-control book_catchphrase' %></td>
           </tr>
           <tr>
             <th><%= f.label "紹介文" %></th>
