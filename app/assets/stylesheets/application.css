@@ -40,14 +40,14 @@
  }
 
  .top {
-  background-image: image-url("log.jpg");
+  background-image: url(log.jpg);
   background-repeat: no-repeat;
   background-size: cover;
   opacity: 0.7;
  }
 
  .about {
-  background-image: image-url("about.jpg");
+  background-image: url(about.jpg);
   background-repeat: no-repeat;
   background-size: cover;
   opacity: 0.9;
