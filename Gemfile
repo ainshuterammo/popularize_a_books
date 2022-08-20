@@ -69,9 +69,6 @@ gem 'rakuten_web_service'
 gem 'kaminari','~> 1.2.1'
 gem 'ransack'
 gem 'rails-i18n'
-gem 'net-smtp'
-gem 'net-imap'
-gem 'net-pop'
 gem "enum_help"
 
 group :production do
