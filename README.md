@@ -46,4 +46,3 @@
 
 ## 使用外部API
  - [楽天ブックス書籍検索API](https://webservice.rakuten.co.jp/documentation/books-book-search)
- - test
