@@ -29,7 +29,7 @@ class Member < ApplicationRecord
   validates :name, presence: true, length:{maximum:50}
   validates :email, presence: true, uniqueness: true
   validates :nick_name, presence: true, length:{maximum:50}
-  validates :self_introduction, presence: true, length:{maximum:250}
+  validates :self_introduction, length:{maximum:250}
 
   def follow(member)
     relationships.create(followed_id: member.id)
