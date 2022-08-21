@@ -60,7 +60,7 @@
 
  h1, h2,
  h3, h4,
- h5, h6 {
+ h5, h6  {
   color: #DB2251;
  }
 
@@ -69,7 +69,9 @@
   color: #DE5D71;
  }
 
- .sign_in, .tb_color, .book_body, .comment-body, .member_introduction {
+ .sign_in, .tb_color, .book_body,
+ .comment-body, .member_introduction
+ .followings {
   text-decoration: none;
   color: #913A00!important;
  }
@@ -88,7 +90,7 @@
     color: #01703C!important;
 }
 
- .page-item.active .page-link{
+ .page-item.active .page-link {
   background-color: #d2b48c!important;
   border-color: #f0f0f0!important;
  }

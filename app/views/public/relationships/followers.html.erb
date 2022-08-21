@@ -1,11 +1,14 @@
-<div class='container'>
+<div class='container py-3'>
 	<div class='row justify-content-center pt-3'>
 		<h2 class="col-md-auto section-ttl text-center">フォロワーリスト</h2>
-    <h2></h2>
-    <% if @members.exists? %>
-      <%= render 'public/members/index', members: @members %>
-    <% else %>
-      <div class='p-0 m-0'>
-        <p>メンバーはいません</p>
+	</div>
+  <% if @members.exists? %>
+    <%= render 'public/members/index', members: @members %>
+  <% else %>
+    <div class='row justify-content-center pt-3'>
+      <div class='col-md-auto section-ttl followings text-center'>
+        <p class='p-0 m-0'>メンバーはいません</p>
       </div>
-    <% end %>
+    </div>
+  <% end %>
+</div>
