@@ -27,12 +27,14 @@
         <td class="tb_color"><%= member.name %></td>
         <td class="tb_color"><%= member.nick_name %></td>
         <td class="tb_color"><p><%= member.books.count %>件</p></td>
-        <td><%= link_to member.followings.count, member_followings_path(member), class: "link" %></td>
-        <td><%= link_to member.followers.count, member_followers_path(member), class: "link" %></td>
+        <td><div id="followings-count-<%=member.id%>"><%= link_to member.followings.count, member_followings_path(member), class: "link" %></div></td>
+        <td><div id="followers-count-<%=member.id%>"><%= link_to member.followers.count, member_followers_path(member), class: "link" %></div></td>
         <td>
         <% if member.name != "guestmember" %>
           <% if current_member != member %>
+          <div id="relationship-btn-<%=member.id%>">
             <%= render "public/relationships/btn", member: member %>
+          </div>
           <% else %>
             <%= link_to "マイページ", member_path(member), class: "btn btn-outline-warning" %>
           <% end %>

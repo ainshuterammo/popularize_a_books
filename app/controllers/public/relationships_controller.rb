@@ -2,15 +2,13 @@ class Public::RelationshipsController < ApplicationController
   before_action :authenticate_member!
 
   def create
-    member = Member.find(params[:member_id])
-    current_member.follow(member)
-		redirect_to request.referer
+    @member = Member.find(params[:member_id])
+    current_member.follow(@member)
   end
 
   def destroy
-    member = Member.find(params[:member_id])
-    current_member.unfollow(member)
-		redirect_to request.referer
+    @member = Member.find(params[:member_id])
+    current_member.unfollow(@member)
   end
 
   def followings
@@ -24,15 +22,3 @@ class Public::RelationshipsController < ApplicationController
   end
 
 end
-
-
-# ここに質問ある
-  # def create
-  #   current_member.follow(params[:member_id])
-  #   redirect_to request.referer
-  # end
-
-  # def destroy
-  #   current_member.unfollow(params[:member_id])
-  #   redirect_to request.referer
-  # end

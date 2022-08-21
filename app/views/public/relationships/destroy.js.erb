@@ -1,0 +1,8 @@
+$('#relationship-btn-<%=@member.id%>').html("<%= j(render "public/relationships/btn", member: @member) %>");
+
+$('#followings-count-<%=@member.id%>').html("<%= j(link_to @member.followings.count, member_followings_path(@member), class: "link") %>");
+$('#followers-count-<%=@member.id%>').html("<%= j(link_to @member.followers.count, member_followers_path(@member), class: "link") %>");
+
+$('#followings-count-<%=current_member.id%>').html("<%= j(link_to current_member.followings.count, member_followings_path(current_member), class: "link") %>");
+$('#followers-count-<%=current_member.id%>').html("<%= j(link_to current_member.followers.count, member_followers_path(current_member), class: "link") %>");
+

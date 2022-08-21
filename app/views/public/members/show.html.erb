@@ -22,7 +22,9 @@
         <div class="text-center my-1">
           <% if @member.name != "guestmember" %>
             <% if current_member != @member %>
-              <td><%= render "public/relationships/btn", member: @member %></td>
+              <div id="relationship-btn-<%=@member.id%>">
+                <%= render "public/relationships/btn", member: @member %>
+              </div>
             <% else %>
               <%= link_to "マイページ編集", edit_member_path(@member), class: "btn btn-outline-success" %>
             <% end %>
@@ -45,11 +47,11 @@
           </tr>
           <tr>
             <th class="text-nowrap" width="40%">フォロー</th>
-            <td><%= link_to @member.followings.count, member_followings_path(@member), class: "link" %></td>
+            <td><div id="followings-count-<%=@member.id%>"><%= link_to @member.followings.count, member_followings_path(@member), class: "link" %></div></td>
           </tr>
           <tr>
             <th class="text-nowrap" width="40%">フォロワー</th>
-            <td><%= link_to @member.followers.count, member_followers_path(@member), class: "link" %></td>
+            <td><div id="followers-count-<%=@member.id%>"><%= link_to @member.followers.count, member_followers_path(@member), class: "link" %></div></td>
           </tr>
         </table>
       </div>

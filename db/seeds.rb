@@ -28,7 +28,7 @@ members =
       email: 'user1@example.com', password: 'passw@rd',
       name: '本次郎', nick_name: 'タカタカ',
       self_introduction: '新しい発見をしたいです、よろしくお願いします',
-      is_deleted: false
+      is_deleted: false,
     },
     {
       email: 'user2@example.com', password: 'passw@rd',
