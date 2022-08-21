@@ -1,6 +1,11 @@
-<h2>フォロワー一覧</h2>
-<% if @members.exists? %>
-  <%= render 'public/members/index', members: @members %>
-<% else %>
-  <p>メンバーはいません</p>
-<% end %>
+<div class='container'>
+	<div class='row justify-content-center pt-3'>
+		<h2 class="col-md-auto section-ttl text-center">フォロワーリスト</h2>
+    <h2></h2>
+    <% if @members.exists? %>
+      <%= render 'public/members/index', members: @members %>
+    <% else %>
+      <div class='p-0 m-0'>
+        <p>メンバーはいません</p>
+      </div>
+    <% end %>
