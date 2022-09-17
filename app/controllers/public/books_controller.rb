@@ -22,7 +22,7 @@ class Public::BooksController < ApplicationController
 
   def show
     @post_comment = PostComment.new
-    @post_comments = @book.post_comments.page(params[:page]).per(10)
+    @post_comments = @book.post_comments.page(params[:page]).per(9)
     if @book.private_status? && @book.member != current_member
       respond_to do |format|
         format.html { redirect_to books_path, notice: 'このページにはアクセスできません' }
@@ -31,7 +31,7 @@ class Public::BooksController < ApplicationController
   end
 
   def index
-    @books = Book.where(status: :public).page(params[:page]).per(10)
+    @books = Book.where(status: :public).page(params[:page]).per(9)
   end
 
   def edit

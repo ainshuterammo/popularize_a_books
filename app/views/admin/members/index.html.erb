@@ -24,7 +24,7 @@
 								<% else %>
 									<span class="text-invalid">退会済み</span>
 								<% end %>
-							<td class='text-center'><%= link_to "詳細", admin_member_path(member.id), class: "btn btn-info my-2 mx-2" %></td>
+							<td class='text-center text-nowrap'><%= link_to "詳細", admin_member_path(member.id), class: "btn btn-info my-2 mx-2" %></td>
 						</tr>
 					<% end %>
 				</tbody>

@@ -48,6 +48,9 @@
 
  .about {
   background-image: url(about.jpg);
+  max-width: 100%;
+  max-height: 150%;
+  object-fit: contain;
   background-repeat: no-repeat;
   background-size: cover;
   opacity: 0.9;
@@ -64,14 +67,19 @@
   color: #DB2251;
  }
 
- th {
+ .card-center {
+  text-align: center;
+ }
+
+ th, .introduction-color {
   text-decoration: none;
   color: #DE5D71;
  }
 
- .sign_in, .tb_color, .book_body,
- .comment-body, .member_introduction
- .followings {
+ .sign_in, .tb_color, .book-body,
+ .comment-body, .member-body,
+ .followings, .card-color,
+ .status-color, .admin_edit {
   text-decoration: none;
   color: #913A00!important;
  }

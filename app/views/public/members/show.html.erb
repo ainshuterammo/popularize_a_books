@@ -57,10 +57,10 @@
       </div>
     </div>
     <div class='row justify-content-center'>
-      <div class="col-md-9 text-center">
+      <div class="col-auto text-center">
         <h4 class="text-center">紹介文</h4>
-        <div class="text-break member_introduction">
-          <p><%= simple_format(@member.self_introduction) %></p>
+        <div class="text-break member-body">
+          <p  class="text-center"><%= simple_format(@member.self_introduction) %></p>
         </div>
       </div>
     </div>
@@ -70,10 +70,12 @@
   <div class='row justify-content-center pt-3'>
   	<div class="col-md-auto section-ttl text-center">
       <h4>投稿一覧</h4>
-      <div class='justify-content-center'>
-        <%= render "public/members/book_show", books: @books %>
-      </div>
-      <%= paginate @books %>
     </div>
+  </div>
+  <div class='row justify-content-center pt-3'>
+    <%= render "public/members/book_show", books: @books %>
+  </div>
+  <div class="mt-2">
+    <%= paginate @books %>
   </div>
 </div>

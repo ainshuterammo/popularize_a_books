@@ -6,16 +6,16 @@ class Public::MembersController < ApplicationController
   def show
     @member = Member.find(params[:id])
     @books = if current_member == @member
-        Kaminari.paginate_array(current_member.books.to_a).page(params[:page]).per(5)
+        Kaminari.paginate_array(current_member.books.to_a).page(params[:page]).per(6)
       else
-        Kaminari.paginate_array(@member.books.where(status: :public).to_a).page(params[:page]).per(5)
+        Kaminari.paginate_array(@member.books.where(status: :public).to_a).page(params[:page]).per(6)
       end
     @book = Book.new
   end
 
   def index
     @book = Book.new
-    @members = Kaminari.paginate_array(Member.all.to_a).page(params[:page]).per(10)
+    @members = Kaminari.paginate_array(Member.all.to_a).page(params[:page]).per(9)
   end
 
   def edit

@@ -1,38 +1,34 @@
 <div class='container'>
+  <h2 class="pt-3" style="text-align: center;">いいね一覧</h2>
 	<div class='row justify-content-center pt-3'>
-		<h2 class="col-md-auto section-ttl text-center">いいね一覧</h2>
-    <table class='table table-hover table-inverse p-0 m-0'>
-      <thead>
-        <tr>
-          <th>ニックネーム</th>
-          <th></th>
-          <th>タイトル</th>
-          <th>ジャンル</th>
-          <th>キャッチコピー</th>
-          <% if member_signed_in? %>
-            <th></th>
-            <th></th>
-          <% end %>
-        </tr>
-      </thead>
-      <% @favorite_books.each do |book|%>
-        <tbody class="table">
-          <tr>
-            <td>
-              <%= link_to member_path(book.member_id) do %>
+    <% @favorite_books.each do |book|%>
+      <div class="col-12 col-md-4 mt-3 mp-3">
+        <div class="card" >
+          <div class="bd-placeholder-img card-img-top card-center" width="100%" height="180">
+            <%= link_to book_path(book.id) do %>
+              <%= render "public/books/image_url", book: book %>
+            <% end %>
+          </div>
+          <div class="card-body">
+            <p class="card-text card-color">投稿者:<br>
+              <%= link_to member_path(book.member_id), class: "link" do %>
                 <%= book.member.nick_name %>
               <% end %>
-            </td>
-            <td><%= render "public/books/image_url", book: book %></td>
-            <td><%= link_to book.title, book_path(book.id) %></td>
-            <td><%= book.genre.name %></td>
-            <td><%= book.catchphrase %></td>
+            </p>
+            <h6 class="card-title card-color">タイトル:<br><%= link_to book.title, book_path(book.id), class: "link" %></h6>
+            <p class="card-text card-color">ジャンル:<br><%= book.genre.name %></p>
+            <p class="card-text card-color">キャッチコピー:<br><%= book.catchphrase %></p>
             <% if member_signed_in? %>
-            <td id="favorite_buttons_<%= book.id %>"><%= render "public/favorites/btn", book: book %></td>
-            <% end %>
-          </tr>
-        </tbody>
-      <% end %>
-    </table>
+              <span class="card-color">ブックマーク:</span>
+              <div class="card-color" id="favorite_buttons_<%= book.id %>"><%= render "public/favorites/btn", book: book %></div>
+           <% end %>
+          </div>
+        </div>
+      </div>
+    <% end %>
+
+    <% for num in 1..(3-(@favorite_books.length % 3)) %>
+      <div class="col-12 col-md-4"></div>
+    <% end %>
   </div>
 </div>

@@ -4,12 +4,12 @@ class Admin::MembersController < ApplicationController
   before_action :find_user, only: [:show, :edit, :update]
 
   def index
-    @members = Kaminari.paginate_array(Member.all.to_a).page(params[:page]).per(10)
+    @members = Kaminari.paginate_array(Member.all.to_a).page(params[:page]).per(9)
   end
 
   # def show; end
   def show
-    @books = Kaminari.paginate_array(@member.books.where(status: :public).to_a).page(params[:page]).per(5)
+    @books = Kaminari.paginate_array(@member.books.where(status: :public).to_a).page(params[:page]).per(6)
   end
 
   def edit

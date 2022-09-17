@@ -5,11 +5,11 @@ class Admin::BooksController < ApplicationController
   def show
     @book = Book.find(params[:id])
     @post_comment = PostComment.new
-    @post_comments = @book.post_comments.page(params[:page]).per(10)
+    @post_comments = @book.post_comments.page(params[:page]).per(9)
   end
 
   def index
-    @books = Book.where(status: :public).page(params[:page]).per(10)
+    @books = Book.where(status: :public).page(params[:page]).per(9)
   end
 
   def destroy

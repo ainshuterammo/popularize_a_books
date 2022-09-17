@@ -35,23 +35,23 @@
       </table>
     </div>
   </div>
-  <div class='row pt-1'>
-    <div class="col-md-3 text-center">
-      <div class="tb_color">ステータス:
+  <div class='row pt-1 justify-content-center'>
+    <div class="col-md-3 text-center status-color">
+      <div>ステータス:
         <% if @book.public_status? %>
-  			  <span class="text-public tb_color">公開</span>
-  		  <% else %>
-  			  <span class="text-private tb_color">非公開</span>
-  		  <% end %>
-  	  </div>
+          <span class="text-public">公開</span>
+        <% else %>
+          <span class="text-private">非公開</span>
+        <% end %>
+      </div>
       <div class='justify-content-center'>
         <td><%= link_to '削除', admin_book_path(@book), method: :delete, data: { confirm: '本当に消しますか？' }, class: "btn btn-sm btn-danger mx-2 my-2" %></td>
       </div>
     </div>
-    <div class="col-md-9 text-cenet mx-auto">
+    <div class="col-md-9 text-cenet justify-content-center">
 		  <h5 class="text-center">紹介文</h5>
-		  <div class="text-break">
-        <p class="book_body"><%= @book.body %></p>
+		  <div class="text-break book-body">
+        <p class="text-center"><%= @book.body %></p>
       </div>
     </div>
   </div>

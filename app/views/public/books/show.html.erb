@@ -35,17 +35,17 @@
       </table>
     </div>
   </div>
-  <div class='row pt-1'>
+  <div class='row pt-1 justify-content-center'>
     <% if @book.member == current_member %>
-      <div class="col-md-3 text-center">
+      <div class="col-md-3 text-center status-color">
         <div>ステータス:
           <% if @book.public_status? %>
-    			  <span class="text-public">公開</span>
-    		  <% else %>
-    			  <span class="text-private">非公開</span>
-    		  <% end %>
-    	  </div>
-    	  <div class='justify-content-center'>
+            <span class="text-public">公開</span>
+          <% else %>
+            <span class="text-private">非公開</span>
+          <% end %>
+        </div>
+        <div class='justify-content-center'>
           <%= form_with model: @book, local: true do |f| %>
             <%= render "public/books/form", f: f %>
             <%= f.submit '変更', class: "btn btn-info mx-2 my-2" %>
@@ -57,9 +57,9 @@
         </div>
       </div>
     <% end %>
-    <div class="col-md-9 text-center">
+    <div class="col-9 text-center justify-content-center">
       <h4 class="text-center">紹介文</h4>
-      <div class="text-break book_body">
+      <div class="text-break book-body">
         <p class="text-center"><%= simple_format(@book.body) %></p>
       </div>
     </div>
@@ -72,7 +72,6 @@
     <div class='book-comments-area'>
       <%= render "public/post_comments/index", post_comments: @post_comments %>
     </div>
-
     <div>
       <span class="error"></span>
       <%= render "public/post_comments/form", book: @book, post_comment: @post_comment, class: 'pb-5' %>

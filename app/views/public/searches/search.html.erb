@@ -1,27 +1,29 @@
 <div class="container">
-  <% if @model == 'member_name' || @model == 'member_nick_name' %>
-    <% if @records.present? %>
-      <h3 class="p-0 m-0">Members search for "<%= @content %>"</h3>
-      <%= render 'public/members/index', members: @records %>
-    <% else %>
-      <h3 class="p-0 m-0">Members search</h3>
-      <h4 class="p-0 m-0">Nothing Result...</h4>
+  <div class='row justify-content-center pt-3'>
+    <% if @model == 'member_name' || @model == 'member_nick_name' %>
+      <% if @records.present? %>
+        <h3 class="p-0 m-0">メンバー検索内容"<%= @content %>"</h3>
+        <%= render 'public/members/index', members: @records %>
+      <% else %>
+        <h3 class="p-0 m-0">メンバー検索:⇒</h3>
+        <h3 class="p-0 m-0">結果なし...</h3>
+      <% end %>
+    <% elsif @model == 'book_title' || @model == 'book_body'  %>
+      <% if @records.present? %>
+        <h3 class="p-0 m-0">本の検索内容"<%= @content %>"</h3>
+        <%= render 'public/books/index', books: @records %>
+      <% else %>
+        <h3 class="p-0 m-0">本の検索:⇒</h3>
+        <h3 class="p-0 m-0">結果なし...</h3>
+      <% end %>
+    <% elsif @model == 'genre' %>
+      <% if @records.present? %>
+        <h3 class="p-0 m-0">ジャンル検索内容"<%= @content %>"</h3>
+        <%= render 'public/books/index', books: @records %>
+      <% else %>
+        <h3 class="p-0 m-0">ジャンル検索:⇒</h3>
+        <h3 class="p-0 m-0">結果なし...</h3>
+      <% end %>
     <% end %>
-  <% elsif @model == 'book_title' || @model == 'book_body'  %>
-    <% if @records.present? %>
-      <h3 class="p-0 m-0">Books search for "<%= @content %>"</h3>
-      <%= render 'public/books/index', books: @records %>
-    <% else %>
-      <h3 class="p-0 m-0">Books search</h3>
-      <h4 class="p-0 m-0">Nothing Result...</h4>
-    <% end %>
-  <% elsif @model == 'genre' %>
-    <% if @records.present? %>
-      <h3 class="p-0 m-0">Genre search for "<%= @content %>"</h3>
-      <%= render 'public/books/index', books: @records %>
-    <% else %>
-      <h3 class="p-0 m-0">Genre search</h3>
-      <h4 class="p-0 m-0">Nothing Result...</h4>
-    <% end %>
-  <% end %>
+  </div>
 </div>

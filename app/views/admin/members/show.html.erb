@@ -63,9 +63,11 @@
   <div class='row justify-content-center pt-3'>
   	<div class="col-md-auto section-ttl text-center">
       <h4>投稿一覧</h4>
-      <div class='justify-content-center'>
-        <%= render "admin/books/index", books: @books %>
-      </div>
+    </div>
+    <div class='row justify-content-center pt-3'>
+      <%= render "admin/books/index", books: @books %>
+    </div>
+    <div class="mt-2">
       <%= paginate @books %>
     </div>
   </div>

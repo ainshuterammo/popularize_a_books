@@ -1,11 +1,11 @@
 <div class='container pb-5'>
+  <h2 class="pt-3" style="text-align: center;">メンバーリスト</h2>
 	<div class='row justify-content-center pt-3'>
-    <div class='col-md-auto'>
-      <h2>メンバーリスト</h2>
-      <% if member_signed_in? %>
-        <%= render 'public/searches/form' %>
-      <% end %>
-      <%= render "public/members/index", members: @members %>
+    <% if member_signed_in? %>
+      <div class="col-12"><%= render 'public/searches/form' %></div>
+    <% end %>
+    <%= render "public/members/index", members: @members %>
+    <div class="mt-2">
       <%= paginate @members %>
     </div>
   </div>

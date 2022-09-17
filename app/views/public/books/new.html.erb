@@ -8,38 +8,42 @@
       <div class="col-md-8">
         <table class='table'>
           <tr>
-            <th><%= f.label "タイトル" %>
-                <p><%= @book.title %></p>
-            </th>
-            <td><%= f.hidden_field :title, :value => @book.title %></td>
+            <th><%= f.label "タイトル" %></th>
+            <td class="tb_color">
+              <p><%= @book.title %></p>
+              <%= f.hidden_field :title, :value => @book.title %>
+            </td>
           </tr>
           <tr>
-            <th><%= f.label "著者" %>
-                <p><%= @book.author %></p>
-            </th>
-            <td><%= f.hidden_field :author, :value => @book.author %></td>
+            <th><%= f.label "著者" %></th>
+            <td class="tb_color">
+              <p><%= @book.author %></p>
+              <%= f.hidden_field :author, :value => @book.author %>
+            </td>
           </tr>
           <tr>
-            <th><%= f.label "出版社" %>
-                <p><%= @book.publisher_name %></p>
-            </th>
-            <td><%= f.hidden_field :publisher_name, :value => @book.publisher_name %></td>
+            <th><%= f.label "出版社" %></th>
+            <td class="tb_color">
+              <p><%= @book.publisher_name %></p>
+              <%= f.hidden_field :publisher_name, :value => @book.publisher_name %>
+            </td>
           </tr>
           <tr>
-            <th><%= f.label "ジャンル" %>
-                <p><%= @book.genre.name %></p>
-            </th>
-            <td><%= f.hidden_field :genre_id, :value => @book.genre_id %></td>
+            <th><%= f.label "ジャンル" %></th>
+            <td class="tb_color">
+              <p><%= @book.genre.name %></p>
+              <%= f.hidden_field :genre_id, :value => @book.genre_id %>
+            </td>
           </tr>
           <tr>
             <th><%= f.label "キャッチコピー" %></th>
-            <td><%= f.text_field :catchphrase, class: 'form-control book_catchphrase' %></td>
+            <td class="tb_color"><%= f.text_field :catchphrase, class: 'form-control book-body' %></td>
           </tr>
         </table>
       </div>
     </div>
-    <div>
-       <%= f.label "紹介文" %><%= f.text_area :body, class: 'form-control book_body' %>
+    <div class="introduction-color font-weight-bold">
+       <%= f.label "紹介文" %><%= f.text_area :body, class: 'form-control book-body' %>
     </div>
     <div class="text-center">
       <%= f.submit "投稿する", class: 'btn btn-success my-3' %>
