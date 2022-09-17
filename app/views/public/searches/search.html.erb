@@ -5,7 +5,7 @@
         <h3 class="p-0 m-0">メンバー検索内容"<%= @content %>"</h3>
         <%= render 'public/members/index', members: @records %>
       <% else %>
-        <h3 class="p-0 m-0">メンバー検索:⇒</h3>
+        <h3 class="p-0 m-0">メンバー検索:=></h3>
         <h3 class="p-0 m-0">結果なし...</h3>
       <% end %>
     <% elsif @model == 'book_title' || @model == 'book_body'  %>
@@ -13,7 +13,7 @@
         <h3 class="p-0 m-0">本の検索内容"<%= @content %>"</h3>
         <%= render 'public/books/index', books: @records %>
       <% else %>
-        <h3 class="p-0 m-0">本の検索:⇒</h3>
+        <h3 class="p-0 m-0">本の検索:=></h3>
         <h3 class="p-0 m-0">結果なし...</h3>
       <% end %>
     <% elsif @model == 'genre' %>
@@ -21,7 +21,7 @@
         <h3 class="p-0 m-0">ジャンル検索内容"<%= @content %>"</h3>
         <%= render 'public/books/index', books: @records %>
       <% else %>
-        <h3 class="p-0 m-0">ジャンル検索:⇒</h3>
+        <h3 class="p-0 m-0">ジャンル検索:=></h3>
         <h3 class="p-0 m-0">結果なし...</h3>
       <% end %>
     <% end %>
