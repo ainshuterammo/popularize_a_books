@@ -11,42 +11,39 @@
         <% else %>
           <%= image_tag "no_image.jpg", size:"240x300",  class: "image img-fluid d-block mx-auto" %>
         <% end %>
-        </div>
       </div>
-        <div class="col-md-10 col-lg-7 px-5 px-sm-0 mx-auto">
-          <table class="table">
-          <tr>
-            <th><%= f.label "タイトル" %></th>
-            <td class="tb_color"><%= @book.title %></td>
-          </tr>
-          <tr>
-            <th><%= f.label "著者" %></th>
-            <td class="tb_color"><%= @book.author %></td>
-          </tr>
-          <tr>
-            <th><%= f.label "出版社"%></th>
-            <td class="tb_color"><%= @book.publisher_name %></td>
-          </tr>
-          <tr>
-            <th><%= f.label "ジャンル" %></th>
-            <td class="tb_color"><%= @book.genre.name %></td>
-          </tr>
-          <tr>
-            <th><%= f.label "キャッチコピー" %></th>
-            <td class="tb_color"><%= f.text_field :catchphrase, class: 'form-control book_catchphrase' %></td>
-          </tr>
-          <tr>
-            <th><%= f.label "紹介文" %></th>
-            <td><%= f.text_area :body, class: 'form-control book_body' %></td>
-          </tr>
-          </table>
-          <div class="text-center">
-            <%= link_to '戻る', book_path(@book.id), class: "btn btn-secondary mx-4" %>
-            <%= f.submit '保存', class: "btn btn-success mx-4" %>
-          </div>
-        </div>
-
-    <% end %>
-  </div>
-  </div>
+    </div>
+    <div class="col-md-10 col-lg-7 px-5 px-sm-0 mx-auto">
+      <table class="table">
+        <tr>
+          <th><%= f.label "タイトル" %></th>
+          <td class="tb_color"><%= @book.title %></td>
+        </tr>
+        <tr>
+          <th><%= f.label "著者" %></th>
+          <td class="tb_color"><%= @book.author %></td>
+        </tr>
+        <tr>
+          <th><%= f.label "出版社"%></th>
+          <td class="tb_color"><%= @book.publisher_name %></td>
+        </tr>
+        <tr>
+          <th><%= f.label "ジャンル" %></th>
+          <td class="tb_color"><%= @book.genre.name %></td>
+        </tr>
+        <tr>
+          <th><%= f.label "キャッチコピー" %></th>
+          <td class="tb_color"><%= f.text_field :catchphrase, class: 'form-control book_catchphrase' %></td>
+        </tr>
+        <tr>
+          <th><%= f.label "紹介文" %></th>
+          <td><%= f.text_area :body, class: 'form-control book_body' %></td>
+        </tr>
+      </table>
+      <div class="text-center">
+        <%= link_to '戻る', book_path(@book.id), class: "btn btn-secondary mx-4" %>
+        <%= f.submit '保存', class: "btn btn-success mx-4" %>
+      </div>
+    </div>
+  <% end %>
 </div>

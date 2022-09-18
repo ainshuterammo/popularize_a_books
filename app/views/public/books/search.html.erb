@@ -5,12 +5,12 @@
   <div class='row justify-content-center'>
     <div class="col-md-8 px-5 px-sm-0 mx-auto mt-4">
       <%= form_with url: books_selection_path, method: :get, local: true do |f| %>
-      <div class="field row mb-3 justify-content-center">
-        <%= f.text_field :keyword, class: "form-control", :placeholder =>"タイトル（キーワード）", class: 'col-6' %>
-      </div>
-      <div class='row justify-content-center'>
-        <%= f.submit '本のタイトルを検索', class: "btn btn-success col-md-6 px-5 px-sm-0 mx-auto my-3" %>
-      </div>
+        <div class="field row mb-3 justify-content-center">
+          <%= f.text_field :keyword, class: "form-control", :placeholder =>"タイトル（キーワード）", class: 'col-6' %>
+        </div>
+        <div class='row justify-content-center'>
+          <%= f.submit '本のタイトルを検索', class: "btn btn-success col-md-6 px-5 px-sm-0 mx-auto my-3" %>
+        </div>
       <% end %>
     </div>
   </div>

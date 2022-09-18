@@ -2,9 +2,9 @@
 	<div class='row justify-content-center pt-3'>
 		<h3 class="col-md-auto section-ttl text-center">マイページ編集</h3>
 	</div>
-	<div class='row justify-content-center pt-3'>
-	  <div class="col-md-12 col-lg-6 py-2 px-sm-0 mx-auto">
-	    <%= render partial: 'layouts/error_messages', locals: {resource: @member} %>
+  <div class='row justify-content-center pt-3'>
+    <div class="col-md-12 col-lg-6 py-2 px-sm-0 mx-auto">
+      <%= render partial: 'layouts/error_messages', locals: {resource: @member} %>
       <%= form_with model:@member, local:true do |f| %>
         <div class="form-group">
           <%= f.label "メンバーネーム" %>
