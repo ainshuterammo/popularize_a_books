@@ -7,7 +7,6 @@ class Admin::MembersController < ApplicationController
     @members = Kaminari.paginate_array(Member.all.to_a).page(params[:page]).per(9)
   end
 
-  # def show; end
   def show
     @books = Kaminari.paginate_array(@member.books.where(status: :public).to_a).page(params[:page]).per(6)
   end

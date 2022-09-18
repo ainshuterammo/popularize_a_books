@@ -56,13 +56,13 @@
     </div>
   </div>
 </div>
+
 <div class="container">
-  <div class='row justify-content-center pt-3'>
-    <div class="col-md-8 mx-auto text-center">
-      <h4>コメント一覧</h4>
-      <div class='book-comments-area'>
-        <%= render "admin/post_comments/index", post_comments: @post_comments %>
-      </div>
+  <div class="col-md-8 mx-auto text-center">
+    <h4>コメント一覧</h4>
+    <div class='book-comments-area'>
+      <%= render "admin/post_comments/index", post_comments: @post_comments %>
+    </div>
     <div id="comment-paginate">
       <%= paginate @post_comments %>
     </div>

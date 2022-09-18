@@ -17,7 +17,7 @@
         <p class="card-text card-color">キャッチコピー:<br><%= book.catchphrase %></p>
         <% if member_signed_in? %>
           <div class="card-color" id="favorite_buttons_<%= book.id %>">ブックマーク:<br><%= render "public/favorites/btn", book: book %></div>
-       <% end %>
+        <% end %>
       </div>
     </div>
   </div>

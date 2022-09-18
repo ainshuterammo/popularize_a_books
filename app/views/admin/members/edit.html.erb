@@ -14,7 +14,7 @@
           <%= f.label "メールアドレス:" %>
           <%= @member.email %>
         </div>
-       <div class="text-center py-2">
+        <div class="text-center py-2">
           <%= f.label "会員ステータス:" %>
           <%= f.radio_button :is_deleted, false %><%= f.label :is_deleted, "有効", class: "text-invalide" %>
           <%= f.radio_button :is_deleted, true %><%= f.label :is_deleted, "退会済み", class: "text-invalid" %>

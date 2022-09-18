@@ -18,7 +18,8 @@
 							<td class='text-center text-nowrap pl-3'><%= link_to '削除', admin_genre_path(genre), method: :delete, data: { confirm: '本当に消しますか？' }, class: "btn btn-sm btn-danger my-1" %></td>
 						</tr>
 					<% end %>
-				</table>
+				</tbody>
+			</table>
 			<%= paginate @genres %>
 		</div>
 	</div>
