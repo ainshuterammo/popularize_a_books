@@ -1,29 +1,40 @@
 <div class="container">
-  <div class='row justify-content-center pt-3'>
-    <% if @model == 'member_name' || @model == 'member_nick_name' %>
-      <% if @records.present? %>
-        <h3 class="p-0 m-0">メンバー検索内容"<%= @content %>"</h3>
+  <% if @model == 'member_name' || @model == 'member_nick_name' %>
+    <% if @records.present? %>
+      <h3 class="pt-3 p-0 m-0" style="text-align: center;">メンバー検索内容"<%= @content %>"</h3>
+      <div class='row justify-content-center pt-3'>
         <%= render 'public/members/index', members: @records %>
-      <% else %>
-        <h3 class="p-0 m-0">メンバー検索:=></h3>
-        <h3 class="p-0 m-0">結果なし...</h3>
-      <% end %>
-    <% elsif @model == 'book_title' || @model == 'book_body'  %>
-      <% if @records.present? %>
-        <h3 class="p-0 m-0">本の検索内容"<%= @content %>"</h3>
-        <%= render 'public/books/index', books: @records %>
-      <% else %>
-        <h3 class="p-0 m-0">本の検索:=></h3>
-        <h3 class="p-0 m-0">結果なし...</h3>
-      <% end %>
-    <% elsif @model == 'genre' %>
-      <% if @records.present? %>
-        <h3 class="p-0 m-0">ジャンル検索内容"<%= @content %>"</h3>
-        <%= render 'public/books/index', books: @records %>
-      <% else %>
-        <h3 class="p-0 m-0">ジャンル検索:=></h3>
-        <h3 class="p-0 m-0">結果なし...</h3>
-      <% end %>
+      </div>
+    <% else %>
+      <div class='row no-results justify-content-center pt-5 pb-3'>
+        <h3 class="p-0 m-0">メンバー検索=></h3>
+        <h3 class="p-0 m-0 results">結果なし...</h3>
+      </div>
     <% end %>
+  <% elsif @model == 'book_title' || @model == 'book_body'  %>
+    <% if @records.present? %>
+      <h3 class="pt-3 p-0 m-0" style="text-align: center;">本の検索内容"<%= @content %>"</h3>
+      <div class='row justify-content-center pt-3'>
+        <%= render 'public/books/index', books: @records %>
+      </div>
+    <% else %>
+      <div class='row no-results justify-content-center pt-5 pb-3'>
+        <h3 class="p-0 m-0">本の検索=></h3>
+        <h3 class="p-0 m-0 results">結果なし...</h3>
+      </div>
+    <% end %>
+  <% elsif @model == 'genre' %>
+    <% if @records.present? %>
+      <h3 class="pt-3 p-0 m-0" style="text-align: center;">ジャンル検索内容"<%= @content %>"</h3>
+      <div class='row justify-content-center pt-3'>
+        <%= render 'public/books/index', books: @records %>
+      </div>
+    <% else %>
+      <div class='row no-results justify-content-center pt-5 pb-3'>
+        <h3 class="p-0 m-0">ジャンル検索=></h3>
+        <h3 class="p-0 m-0 results">結果なし...</h3>
+      </div>
+    <% end %>
+  <% end %>
   </div>
 </div>
