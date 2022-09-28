@@ -1,6 +1,8 @@
 class Public::BooksController < ApplicationController
   before_action :member_signed_in, only: [:new, :show, :edit, :create, :update, :destroy, :search, :selection]
+  before_action :ensure_member, only: [:edit, :update, :destroy]
   before_action :find_book, only: [:show, :edit, :update, :destroy]
+
 
   def new
     isbn = params[:isbn]
@@ -72,6 +74,14 @@ class Public::BooksController < ApplicationController
   end
 
   private
+
+  def ensure_member
+    @book = Book.find(params[:id])
+
+    unless @book.member.id == current_member.id
+       redirect_to book_path(@book)
+    end
+  end
 
   def member_signed_in
     unless member_signed_in?

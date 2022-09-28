@@ -18,14 +18,14 @@ class Book < ApplicationRecord
 
   def self.search_for(content, method, column)
     if method == 'perfect'
-      members =  Book.where("#{column} LIKE?","#{content}")
+      members =  Book.where("#{column} LIKE?","#{content}").where(status: :public)
       return members
     elsif method == 'forward'
-      Book.where("#{column} LIKE ?", "#{content}" + '%')
+      Book.where("#{column} LIKE ?", "#{content}" + '%').where(status: :public)
     elsif method == 'backward'
-      Book.where("#{column} LIKE ?", '%' + "#{content}")
+      Book.where("#{column} LIKE ?", '%' + "#{content}").where(status: :public)
     else
-      Book.where("#{column} LIKE ?", '%' + "#{content}" + '%')
+      Book.where("#{column} LIKE ?", '%' + "#{content}" + '%').where(status: :public)
     end
   end
 

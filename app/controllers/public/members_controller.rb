@@ -8,7 +8,7 @@ class Public::MembersController < ApplicationController
     @books = if current_member == @member
         Kaminari.paginate_array(current_member.books.to_a).page(params[:page]).per(6)
       else
-        Kaminari.paginate_array(@member.books.where(status: :public).to_a).page(params[:page]).per(6)
+        Kaminari.paginate_array(@member.books.where(status: :public).to_a).page(params[:page]).per()
       end
     @book = Book.new
   end
