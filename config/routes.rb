@@ -11,7 +11,7 @@ Rails.application.routes.draw do
     resources :books, only: [:show, :index, :destroy] do
       resources :post_comments, only: [:destroy]
     end
-    resources :genres, only: [:index, :destroy]
+    resources :genres, only: [:index, :edit, :update, :destroy]
   end
 
   # 顧客用

@@ -45,14 +45,14 @@ class Member < ApplicationRecord
 
   def self.search_for(content, method, column)
     if method == 'perfect'
-      members =  Member.where("#{column} LIKE?","#{content}")
+      members =  Member.where("#{column} LIKE?","#{content}").where(is_deleted: :false)
       return members
     elsif method == 'forward'
-      Member.where("#{column} LIKE ?", "#{content}" + '%')
+      Member.where("#{column} LIKE ?", "#{content}" + '%').where(is_deleted: :false)
     elsif method == 'backward'
-      Member.where("#{column} LIKE ?", '%' + "#{content}")
+      Member.where("#{column} LIKE ?", '%' + "#{content}").where(is_deleted: :false)
     else
-      Member.where("#{column} LIKE ?", '%' + "#{content}" + '%')
+      Member.where("#{column} LIKE ?", '%' + "#{content}" + '%').where(is_deleted: :false)
     end
   end
 

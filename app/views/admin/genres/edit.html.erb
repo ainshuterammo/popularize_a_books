@@ -1,0 +1,19 @@
+<div class='container pb-5'>
+  <div class='row justify-content-center pt-3'>
+    <h2 class="col-md-auto section-ttl text-center">編集画面</h2>
+  </div>
+  <%= form_with model: @genre, url: admin_genre_path(@genre),local:true do |f| %>
+    <div class="col-md-10 col-lg-7 px-5 px-sm-0 mx-auto">
+      <table class="table">
+        <tr>
+          <td class="tb_color"><%= @genre.name %></td>
+          <%= f.text_field :name, class: "form-control name" %>
+        </tr>
+      </table>
+      <div class="text-center">
+        <%= link_to '戻る', admin_genres_path(@genre.id), class: "btn btn-secondary mx-4" %>
+        <%= f.submit '保存', class: "btn btn-success mx-4" %>
+      </div>
+    </div>
+  <% end %>
+</div>

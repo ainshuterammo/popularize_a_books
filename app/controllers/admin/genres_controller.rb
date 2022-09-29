@@ -6,6 +6,19 @@ class Admin::GenresController < ApplicationController
     @genres = Genre.all.page(params[:page]).per(10)
   end
 
+  def edit
+    @genre = Genre.find(params[:id])
+  end
+
+  def update
+    @genre = Genre.find(params[:id])
+    if @genre.update(genre_params)
+      redirect_to admin_genres_path, notice: "編集成功しました"
+    else
+      render "edit", notice: "編集失敗しました"
+    end
+  end
+
   def destroy
     @genre = Genre.find(params[:id])
     @genre.destroy

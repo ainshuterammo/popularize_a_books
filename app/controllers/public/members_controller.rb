@@ -1,7 +1,7 @@
 class Public::MembersController < ApplicationController
   before_action :authenticate_member!
   before_action :ensure_guest_member, only: [:edit]
-  before_action :ensure_correct_member, only: [:edit, :update]
+  before_action :ensure_correct_member, only: [:edit, :update, :destroy]
 
   def show
     @member = Member.find(params[:id])
@@ -15,7 +15,8 @@ class Public::MembersController < ApplicationController
 
   def index
     @book = Book.new
-    @members = Kaminari.paginate_array(Member.all.to_a).page(params[:page]).per(9)
+    # @members = Kaminari.paginate_array(Member.all.to_a).page(params[:page]).per(9)
+    @members = Member.where(is_deleted: :false).page(params[:page]).per(9)
   end
 
   def edit

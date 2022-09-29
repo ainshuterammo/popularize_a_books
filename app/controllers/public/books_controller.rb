@@ -3,7 +3,6 @@ class Public::BooksController < ApplicationController
   before_action :ensure_member, only: [:edit, :update, :destroy]
   before_action :find_book, only: [:show, :edit, :update, :destroy]
 
-
   def new
     isbn = params[:isbn]
     book = RakutenWebService::Books::Book.search(isbn: isbn).first
