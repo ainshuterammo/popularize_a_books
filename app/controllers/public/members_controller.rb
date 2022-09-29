@@ -15,7 +15,6 @@ class Public::MembersController < ApplicationController
 
   def index
     @book = Book.new
-    # @members = Kaminari.paginate_array(Member.all.to_a).page(params[:page]).per(9)
     @members = Member.where(is_deleted: :false).page(params[:page]).per(9)
   end
 
